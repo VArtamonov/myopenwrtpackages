@@ -10,8 +10,6 @@ PKG_NAME:=helloworld
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
 PKG_LICENSE:=MIT
-PKG_BUILD_PARALLEL:=1
-PKG_INSTALL:=1
 
 #
 #PKG_BUILD_DIR=$(BUILD_DIR)/$(PKG_NAME)-$(BUILD_VARIANT)
@@ -39,9 +37,10 @@ endef
 # Package preparation instructions; create the build directory and copy the source code. 
 # The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
 define Build/Prepare
+	echo '...'
 	echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	mkdir -p $(PKG_BUILD_DIR)
-	cp ./src/* $(PKG_BUILD_DIR)
+	$(CP) ./src/* $(PKG_BUILD_DIR)
 endef
 
 #define Build/Configure
@@ -60,7 +59,6 @@ endef
 
 # Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
 define Package/helloworld/install
-
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/usr/bin
 endef
