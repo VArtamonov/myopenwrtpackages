@@ -10,6 +10,12 @@ PKG_NAME:=helloworld
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
 
+
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
+PKG_LICENSE:=MIT
+PKG_BUILD_PARALLEL:=1
+PKG_INSTALL:=1
+
 # Source settings (i.e. where to find the source codes)
 # This is a custom variable, used below
 ## SOURCE_DIR:=src
@@ -37,16 +43,23 @@ define Build/Prepare
 #        $(Build/Patch)
 endef
 
+define Build/Configure
+	echo 'Configure $(PKG_NAME) ...'
+
+endef
+
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
 define Build/Compile
-        $(TARGET_CC) $(TARGET_CFLAGS) -o $(PKG_BUILD_DIR)/helloworld.o -c $(PKG_BUILD_DIR)/helloworld.c
-        $(TARGET_CC) $(TARGET_LDFLAGS) -o $(PKG_BUILD_DIR)/$1 $(PKG_BUILD_DIR)/helloworld.o
+	echo 'Compile $(PKG_NAME) ...'
+
+	$(TARGET_CC) $(TARGET_CFLAGS) -o $(PKG_BUILD_DIR)/helloworld.o -c $(PKG_BUILD_DIR)/helloworld.c
+	$(TARGET_CC) $(TARGET_LDFLAGS) -o $(PKG_BUILD_DIR)/$1 $(PKG_BUILD_DIR)/helloworld.o
 endef
 
 # Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
 define Package/helloworld/install
-        $(INSTALL_DIR) $(1)/usr/bin
-        $(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/usr/bin
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/usr/bin
 endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
