@@ -13,11 +13,13 @@ PKG_LICENSE:=MIT
 PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
 
-PKG_BUILD_DIR=$(BUILD_DIR)/$(PKG_NAME)-$(BUILD_VARIANT)
-
+#
+#PKG_BUILD_DIR=$(BUILD_DIR)/$(PKG_NAME)-$(BUILD_VARIANT)
+#
 # Source settings (i.e. where to find the source codes)
 # This is a custom variable, used below
 # SOURCE_DIR:=files
+#
 
 include $(INCLUDE_DIR)/package.mk
 
