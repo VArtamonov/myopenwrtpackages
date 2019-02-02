@@ -10,7 +10,7 @@ PKG_NAME:=helloworld
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
 
-# PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
 PKG_LICENSE:=MIT
 PKG_BUILD_PARALLEL:=1
@@ -18,7 +18,7 @@ PKG_INSTALL:=1
 
 # Source settings (i.e. where to find the source codes)
 # This is a custom variable, used below
-SOURCE_DIR:=files
+# SOURCE_DIR:=files
 
 include $(INCLUDE_DIR)/package.mk
 
