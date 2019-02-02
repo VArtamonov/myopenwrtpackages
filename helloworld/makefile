@@ -1,5 +1,5 @@
 #
-#
+# PACKAGE HELLO WORLD
 #
 
 include $(TOPDIR)/rules.mk
