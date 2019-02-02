@@ -7,7 +7,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=lua-wsapi-full
+PKG_NAME:=lua-wsapi
 PKG_VERSION:=1.7
 PKG_RELEASE:=1
 
