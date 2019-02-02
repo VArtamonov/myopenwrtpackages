@@ -9,9 +9,6 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=helloworld
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
-
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
-
 PKG_LICENSE:=MIT
 PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
@@ -38,9 +35,9 @@ endef
 # Package preparation instructions; create the build directory and copy the source code. 
 # The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
 define Build/Prepare
-	echo 'Prepare $(PKG_NAME) ...'
+	echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	mkdir -p $(PKG_BUILD_DIR)
-	cp $(SOURCE_DIR)/* $(PKG_BUILD_DIR)
+	cp files/* $(PKG_BUILD_DIR)
 endef
 
 define Build/Configure
@@ -49,7 +46,7 @@ endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
 define Build/Compile
-	echo 'Compile $(PKG_NAME) ...'
+	echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		CC="$(TARGET_CC)" \
 		CFLAGS="$(TARGET_CFLAGS)" \
