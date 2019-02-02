@@ -14,7 +14,7 @@ PKG_RELEASE:=1
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/keplerproject/wsapi/tar.gz/v$(PKG_VERSION)?
 PKG_HASH:=48dc7aba0fd2e96a3e5ef51045b5d923964f6ae299de761aa0467031ad44e987
-PKG_BUILD_DIR:=$(BUILD_DIR)/wsapi-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 PKG_LICENSE:=MIT
 PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
@@ -35,12 +35,18 @@ define Package/lua-wsapi-full/description
 endef
 
 define Build/Configure
+	echo 'Configure $(PKG_NAME) ...'
+
 endef
 
 define Build/Compile
+	echo 'Compile $(PKG_NAME) ...'
+
 endef
 
 define Build/Install
+	echo 'Install $(PKG_NAME) ...'
+
 endef
 
 define Package/lua-wsapi-full/install

@@ -10,8 +10,8 @@ PKG_NAME:=helloworld
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
 
-
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
+
 PKG_LICENSE:=MIT
 PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
@@ -51,6 +51,7 @@ endef
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
 define Build/Compile
 	echo 'Compile $(PKG_NAME) ...'
+
 
 	$(TARGET_CC) $(TARGET_CFLAGS) -o $(PKG_BUILD_DIR)/helloworld.o -c $(PKG_BUILD_DIR)/helloworld.c
 	$(TARGET_CC) $(TARGET_LDFLAGS) -o $(PKG_BUILD_DIR)/$1 $(PKG_BUILD_DIR)/helloworld.o
