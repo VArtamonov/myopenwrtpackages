@@ -19,7 +19,7 @@ include $(INCLUDE_DIR)/package.mk
 # Package definition; instructs on how and where our package will appear in the overall configuration menu ('make menuconfig')
 define Package/helloworld
 	SUBMENU:=Examples
-	SECTION:=opt
+	SECTION:=myopenwrtpackages
 	CATEGORY:=Extra packages
 	TITLE:=Hello, World!
 endef
