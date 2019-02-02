@@ -35,17 +35,20 @@ define Package/lua-wsapi-full/description
 endef
 
 define Build/Configure
-	echo 'Configure $(PKG_NAME) ...'
+	@echo 'Configure $(PKG_NAME) ...'
+	@ls
 
 endef
 
 define Build/Compile
-	echo 'Compile $(PKG_NAME) ...'
+	@echo 'Compile $(PKG_NAME) ...'
+	@ls
 
 endef
 
 define Build/Install
-	echo 'Install $(PKG_NAME) ...'
+	@echo 'Install $(PKG_NAME) ...'
+	@ls
 
 endef
 
