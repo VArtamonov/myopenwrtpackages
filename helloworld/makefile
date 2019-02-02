@@ -15,11 +15,10 @@ include $(INCLUDE_DIR)/package.mk
 
 # Package definition; instructs on how and where our package will appear in the overall configuration menu ('make menuconfig')
 define Package/helloworld
-  SECTION:=opt
-  CATEGORY:=Extra packages
-#  SECTION:=examples
-#  CATEGORY:=Examples
-  TITLE:=Hello, World!
+	SUBMENU:=Examples
+	SECTION:=opt
+	CATEGORY:=Extra packages
+	TITLE:=Hello, World!
 endef
 
 # Package description; a more verbose description on what our package does
