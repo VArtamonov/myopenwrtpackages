@@ -40,24 +40,24 @@ define Package/lua-wsapi-full/description
 	This package contains the basic stuff.
 endef
 
-#define Build/Configure
-#	@echo 'Configure $(PKG_NAME) ...'
-#	@pwd
-#	@ls
-#endef
+define Build/Configure
+	@echo 'Configure $(PKG_NAME) ...'
+	@pwd
+	@ls
+endef
 
-#define Build/Compile
-#	@echo 'Compile $(PKG_NAME) ...'
-#	@pwd
-#	@ls
-#endef
+define Build/Compile
+	@echo 'Compile $(PKG_NAME) ...'
+	@pwd
+	@ls
+endef
 
-#define Build/Install
-#	@echo 'Install $(PKG_NAME) ...'
-#	@pwd
-#	$(call Build/Install/Default)
-#	@ls
-#endef
+define Build/Install
+	@echo 'Install $(PKG_NAME) ...'
+	@pwd
+	$(call Build/Install/Default)
+	@ls
+endef
 
 define Package/lua-wsapi-full/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua
