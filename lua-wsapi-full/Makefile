@@ -15,7 +15,7 @@ PKG_RELEASE:=1
 #PKG_SOURCE_URL:=https://codeload.github.com/keplerproject/wsapi/tar.gz/v$(PKG_VERSION)?
 #PKG_HASH:=48dc7aba0fd2e96a3e5ef51045b5d923964f6ae299de761aa0467031ad44e987
 
-PKG_SOURCE_URL:=https://github.com/keplerproject/wsapi.git
+PKG_SOURCE_URL:=git://github.com/keplerproject/wsapi.git
 PKG_SOURCE_PROTO:=git
 
 ### PKG_BUILD_DIR:=$(BUILD_DIR)/wsapi-$(PKG_VERSION)
@@ -27,16 +27,16 @@ PKG_SOURCE_PROTO:=git
 include $(INCLUDE_DIR)/package.mk
 
 define Package/lua-wsapi-full
-  SUBMENU:=Examples
-  SECTION:=myopenwrtpackages
-  CATEGORY:=Extra packages
-  TITLE:=Lua WSAPI FULL
-  DEPENDS:= +lua +luafilesystem +fcgi
+	SUBMENU:=Examples
+	SECTION:=myopenwrtpackages
+	CATEGORY:=Extra packages
+	TITLE:=Lua WSAPI FULL
+	DEPENDS:= +lua +luafilesystem +fcgi
 endef
 
 define Package/lua-wsapi-full/description
-  WSAPI is an API that abstracts the web server from Lua web applications
-  This package contains the basic stuff.
+	WSAPI is an API that abstracts the web server from Lua web applications
+	This package contains the basic stuff.
 endef
 
 #define Build/Configure
