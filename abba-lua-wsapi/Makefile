@@ -7,37 +7,35 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=lua-wsapi-full
+PKG_NAME:=abba-lua-wsapi
 PKG_VERSION:=1.7
 PKG_RELEASE:=1
 
-#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-#PKG_SOURCE_URL:=https://codeload.github.com/keplerproject/wsapi/tar.gz/v$(PKG_VERSION)?
-#PKG_HASH:=48dc7aba0fd2e96a3e5ef51045b5d923964f6ae299de761aa0467031ad44e987
+# PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+# PKG_SOURCE_URL:=https://codeload.github.com/keplerproject/wsapi/tar.gz/v$(PKG_VERSION)?
+# PKG_HASH:=48dc7aba0fd2e96a3e5ef51045b5d923964f6ae299de761aa0467031ad44e987
+# PKG_SOURCE_URL:=https://github.com/keplerproject/wsapi.git
+# PKG_SOURCE_PROTO:=git
+# PKG_SOURCE_VERSION:=master
+# PKG_BUILD_DIR:=$(BUILD_DIR)/wsapi-$(PKG_VERSION)
+# PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
+# PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(BUILD_VARIANT)/$(PKG_NAME)-$(PKG_VERSION)
 
-PKG_SOURCE_URL:=https://github.com/keplerproject/wsapi.git
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=master
-
-### PKG_BUILD_DIR:=$(BUILD_DIR)/wsapi-$(PKG_VERSION)
-#PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
-### PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(BUILD_VARIANT)/$(PKG_NAME)-$(PKG_VERSION)
-
-#PKG_LICENSE:=MIT
+PKG_LICENSE:=MIT
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/lua-wsapi-full
-	SUBMENU:=Examples
+define Package/abba-lua-wsapi-full
+	SUBMENU:=ABBA
 	SECTION:=myopenwrtpackages
 	CATEGORY:=Extra packages
 	TITLE:=Lua WSAPI FULL
-	DEPENDS:= +lua +luafilesystem +fcgi
+	DEPENDS:= +lua +luafilesystem +fcgi +lua-coxpcall
 endef
 
 define Package/lua-wsapi-full/description
 	WSAPI is an API that abstracts the web server from Lua web applications
-	This package contains the basic stuff.
+	This package contains the ABBA modify.
 endef
 
 define Build/Configure
@@ -59,10 +57,9 @@ define Build/Install
 	@ls
 endef
 
-define Package/lua-wsapi-full/install
+define Package/abba-lua-wsapi/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/src/wsapi.lua $(1)/usr/lib/lua
-
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/launcher/wsapi.cgi $(1)/usr/bin
 
