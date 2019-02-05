@@ -45,12 +45,12 @@ endef
 #	@ls
 #endef
 
-define Build/Compile
-	@echo '..................................................'
-	@echo 'Compile $(PKG_NAME) ...'
-	@pwd
-	@ls
-endef
+#define Build/Compile
+#	@echo '..................................................'
+#	@echo 'Compile $(PKG_NAME) ...'
+#	@pwd
+#	@ls
+#endef
 
 #define Build/Install
 #	@echo '..................................................'
