@@ -71,7 +71,7 @@ define Package/abba-lua-wsapi/install
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/src/wsapi/{common,request,response,util,cgi,sapi,ringer,mock}.lua $(1)/usr/lib/lua/wsapi
 
 	$(INSTALL_DIR) $(1)/usr/lib/lua
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/fastcfg/lfcgi.so $(1)/usr/lib/lua/lfcgi.so
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.so $(1)/usr/lib/lua/lfcgi.so
 
 endef
 
