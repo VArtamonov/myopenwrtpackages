@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=abba-lua-wsapi
-PKG_VERSION:=1.7
+PKG_VERSION:=2019
 PKG_RELEASE:=1
 
 # PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -38,27 +38,27 @@ define Package/abba-lua-wsapi/description
 	This package contains the ABBA modify.
 endef
 
-define Build/Configure
-	@echo '..................................................'
-	@echo 'Configure $(PKG_NAME) ...'
-	@pwd
-	@ls
-endef
+#define Build/Configure
+#	@echo '..................................................'
+#	@echo 'Configure $(PKG_NAME) ...'
+#	@pwd
+#	@ls
+#endef
 
-define Build/Compile
-	@echo '..................................................'
-	@echo 'Compile $(PKG_NAME) ...'
-	@pwd
-	@ls
-endef
+#define Build/Compile
+#	@echo '..................................................'
+#	@echo 'Compile $(PKG_NAME) ...'
+#	@pwd
+#	@ls
+#endef
 
-define Build/Install
-	@echo '..................................................'
-	@echo 'Install $(PKG_NAME) ...'
-	@pwd
-	$(call Build/Install/Default)
-	@ls
-endef
+#define Build/Install
+#	@echo '..................................................'
+#	@echo 'Install $(PKG_NAME) ...'
+#	@pwd
+#	$(call Build/Install/Default)
+#	@ls
+#endef
 
 define Package/abba-lua-wsapi/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua
