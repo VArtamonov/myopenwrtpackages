@@ -1,5 +1,7 @@
 
 
+LIB_OPTION= -shared -fPIC
+
 
 all: src/fastcgi/lfcgi.so
 	@echo 'MyPackages FAST ...'
