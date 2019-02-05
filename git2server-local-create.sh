@@ -8,7 +8,7 @@ cwd=$(pwd)
 
 cd /srv/git
 echo "Create dir $gitp1.git ..."
-sudo mkdir -p -v $gitp1.git
+sudo  -u gitdaemon mkdir -p -v $gitp1.git
 
 cd $cwd
 pwd
@@ -19,4 +19,4 @@ rm -rdf $gitp1.git/*
 git clone --bare $gitp1 
 
 echo "Copy to local server ..."
-sudo cp -rf $gitp1.git/* /srv/git/$gitp1.git
+sudo  -u gitdaemon cp -rf $gitp1.git/* /srv/git/$gitp1.git
