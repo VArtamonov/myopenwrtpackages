@@ -1,3 +1,8 @@
 
 
 
+all:
+	@echo 'MyPackages FAST ...'
+
+
+
