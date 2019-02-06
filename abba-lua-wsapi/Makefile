@@ -26,16 +26,16 @@ PKG_LICENSE:=MIT
 include $(INCLUDE_DIR)/package.mk
 
 define Package/abba-lua-wsapi
-	SUBMENU:=ABBA
-	SECTION:=myopenwrtpackages
-	CATEGORY:=Extra packages
-	TITLE:=ABBA Lua WSAPI
-	DEPENDS:= +lua +liblua +luafilesystem +fcgi +lua-coxpcall
+  SUBMENU:=ABBA
+  SECTION:=myopenwrtpackages
+  CATEGORY:=Extra packages
+  TITLE:=ABBA Lua WSAPI
+  DEPENDS:= +lua +liblua +luafilesystem +fcgi +lua-coxpcall
 endef
 
 define Package/abba-lua-wsapi/description
-	WSAPI is an API that abstracts the web server from Lua web applications
-	This package contains the ABBA modify.
+  WSAPI is an API that abstracts the web server from Lua web applications
+  This package contains the ABBA modify.
 endef
 
 #define Build/Configure
