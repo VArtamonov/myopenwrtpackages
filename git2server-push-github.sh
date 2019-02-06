@@ -10,6 +10,6 @@ echo "FEED update mypackages ..."
 
 git add .
 git commit -a -S -m 'Commit '
-git push
+git push --force
 
 echo "End ..."
