@@ -30,12 +30,11 @@ define Package/abba-lua-wsapi
   SECTION:=myopenwrtpackages
   CATEGORY:=Extra packages
   TITLE:=ABBA Lua WSAPI
-  DEPENDS:= +lua +liblua +luafilesystem +fcgi +lua-coxpcall
+  DEPENDS:=+lua +liblua +luafilesystem +fcgi +lua-coxpcall
 endef
 
 define Package/abba-lua-wsapi/description
-  WSAPI is an API that abstracts the web server from Lua web applications
-  This package contains the ABBA modify.
+  WSAPI is an API that abstracts the web server from Lua web applications. This package contains the ABBA modify.
 endef
 
 #define Build/Configure
