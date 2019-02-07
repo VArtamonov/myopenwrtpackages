@@ -42,7 +42,7 @@ endef
 
 define Build/Configure
 	@echo 'Configure $(PKG_NAME) ...'
-	$(call MESSAGE, "TEST ...")
+	@$(call MESSAGE, "TEST ...")
 	@pwd
 	@ls
 endef
