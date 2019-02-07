@@ -30,7 +30,7 @@ define Package/abba-lua-wsapi
   SECTION:=myopenwrtpackages
   CATEGORY:=Extra packages
   TITLE:=ABBA Lua WSAPI
-  DEPENDS:=+lua +liblua +luafilesystem +fcgi +lua-coxpcall
+  DEPENDS:=+lua +liblua +luafilesystem +fcgi +lua-coxpcall +lua-rings
 endef
 
 define Package/abba-lua-wsapi/description
