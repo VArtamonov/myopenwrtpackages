@@ -32,7 +32,7 @@ define Package/lua-cgi
   SECTION:=myopenwrtpackages
   CATEGORY:=Extra packages
   TITLE:=Lua CGI
-  DEPENDS:=+lua +liblua +luafilesystem +fcgi +lua-coxpcall +lua-rings
+  DEPENDS:=+lua-wsapi-full
 
 endef
 
@@ -63,7 +63,7 @@ define Package/lua-cgi/install
 ##	$(INSTALL_DATA) $(PKG_BUILD_DIR)/src/wsapi.lua $(1)/usr/lib/lua
 
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/launcher/* $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/launchers/* $(1)/usr/bin
 
 	$(INSTALL_DIR) $(1)/usr/lib/lua/cgilua
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/src/cgilua/*.lua $(1)/usr/lib/lua/cgilua
