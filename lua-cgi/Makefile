@@ -55,7 +55,6 @@ endef
 define Build/Install
 	@echo 'Install $(PKG_NAME) ...'
 	@pwd
-	$(call Build/Install/Default)
 	@ls
 endef
 
