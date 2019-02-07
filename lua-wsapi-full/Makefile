@@ -32,7 +32,8 @@ define Package/lua-wsapi-full
   SECTION:=myopenwrtpackages
   CATEGORY:=Extra packages
   TITLE:=Lua WSAPI FULL
-  DEPENDS:= +lua +luafilesystem +fcgi
+  DEPENDS:=+lua +liblua +luafilesystem +fcgi +lua-coxpcall +lua-rings
+
 endef
 
 define Package/lua-wsapi-full/description
@@ -49,8 +50,8 @@ endef
 
 define Build/Compile
 	@echo 'Compile $(PKG_NAME) ...'
-	@pwd
-	@ls
+	$(TARGET_CC) $(TARGET_CFLAGS) -fPIC -o $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.o -c $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.c -lfcgi
+	$(TARGET_CC) $(TARGET_LDFLAGS) -shared -o $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.so $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.o
 endef
 
 define Build/Install
@@ -68,7 +69,11 @@ define Package/lua-wsapi-full/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/launcher/wsapi.cgi $(1)/usr/bin
 
 	$(INSTALL_DIR) $(1)/usr/lib/lua/wsapi
-	$(INSTALL_DATA) $(PKG_BUILD_DIR)/src/wsapi/{common,request,response,util,cgi,sapi,ringer,mock}.lua $(1)/usr/lib/lua/wsapi
+	$(INSTALL_DATA) $(PKG_BUILD_DIR)/src/wsapi/*.lua $(1)/usr/lib/lua/wsapi
+
+	$(INSTALL_DIR) $(1)/usr/lib/lua
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.so $(1)/usr/lib/lua/lfcgi.so
+
 endef
 
 $(eval $(call BuildPackage,lua-wsapi-full))
