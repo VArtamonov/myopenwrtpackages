@@ -67,6 +67,7 @@ define Package/lua-wsapi-full/install
 
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/launcher/wsapi.cgi $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/launcher/wsapi.fcgi $(1)/usr/bin
 
 	$(INSTALL_DIR) $(1)/usr/lib/lua/wsapi
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/src/wsapi/*.lua $(1)/usr/lib/lua/wsapi
