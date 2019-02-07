@@ -48,7 +48,8 @@ endef
 
 define Build/Compile
 	@echo 'Compile $(PKG_NAME) ...'
-	$(TARGET_CC) $(TARGET_CFLAGS) $(TARGET_LDFLAGS) -fPIC -shared -o $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.so -c $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.c -lfcgi
+	$(TARGET_CC) -g -fPIC -o $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.o -c $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.c -lfcgi
+	$(TARGET_CC) $(TARGET_LDFLAGS) -shared -o $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.so $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.o
 endef
 
 define Build/Install
