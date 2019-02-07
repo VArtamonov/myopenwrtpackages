@@ -28,20 +28,21 @@ PKG_SOURCE_VERSION:=master
 include $(INCLUDE_DIR)/package.mk
 
 define Package/lua-wsapi-full
-	SUBMENU:=Examples
-	SECTION:=myopenwrtpackages
-	CATEGORY:=Extra packages
-	TITLE:=Lua WSAPI FULL
-	DEPENDS:= +lua +luafilesystem +fcgi
+  SUBMENU:=ABBA
+  SECTION:=myopenwrtpackages
+  CATEGORY:=Extra packages
+  TITLE:=Lua WSAPI FULL
+  DEPENDS:= +lua +luafilesystem +fcgi
 endef
 
 define Package/lua-wsapi-full/description
-	WSAPI is an API that abstracts the web server from Lua web applications
-	This package contains the basic stuff.
+  WSAPI is an API that abstracts the web server from Lua web applications.
+  This package contains the basic stuff.
 endef
 
 define Build/Configure
 	@echo 'Configure $(PKG_NAME) ...'
+	($(call MESSAGE, "TEST ...")
 	@pwd
 	@ls
 endef
