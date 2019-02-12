@@ -1,0 +1,6 @@
+[submodule "fork-wsapi"]
+	path = fork-wsapi
+	url = git://github.com/vartamonov/fork-wsapi.git
+[submodule "fork-cgilua"]
+	path = fork-cgilua
+	url = git://github.com/vartamonov/fork-cgilua.git
