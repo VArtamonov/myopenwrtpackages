@@ -6,7 +6,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=luci-app-webserver-1
+PKG_NAME:=abba-luci-app-webserver-1
 
 # Version == major.minor.patch
 # increase on new functionality (minor) or patches (patch)
@@ -22,7 +22,7 @@ LUCI_TITLE:=LuCI application WEB server.
 
 LUCI_DESCRIPTION:=LuCI my web server
 
-# LUCI_DEPENDS:=+ahcpd
+LUCI_DEPENDS:=+abba-lua-cgi
 
 include ../../luci/luci.mk
 

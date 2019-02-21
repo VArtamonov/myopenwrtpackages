@@ -7,7 +7,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=lua-wsapi-full
+PKG_NAME:=abba-lua-cgi
 PKG_VERSION:=1.7
 PKG_RELEASE:=1
 
@@ -15,7 +15,7 @@ PKG_RELEASE:=1
 #PKG_SOURCE_URL:=https://codeload.github.com/keplerproject/wsapi/tar.gz/v$(PKG_VERSION)?
 #PKG_HASH:=48dc7aba0fd2e96a3e5ef51045b5d923964f6ae299de761aa0467031ad44e987
 
-PKG_SOURCE_URL:=https://github.com/keplerproject/wsapi.git
+PKG_SOURCE_URL:=https://github.com/vartamonov/fork-cgilua.git
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=master
 
@@ -27,12 +27,12 @@ PKG_SOURCE_VERSION:=master
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/lua-wsapi-full
+define Package/abba-lua-cgi
   SUBMENU:=ABBA
   SECTION:=myopenwrtpackages
   CATEGORY:=Extra packages
-  TITLE:=Lua WSAPI FULL
-  DEPENDS:=+lua +liblua +luafilesystem +fcgi +lua-coxpcall +lua-rings
+  TITLE:=Lua CGI
+  DEPENDS:=+lua-wsapi-full
 
 endef
 
@@ -44,33 +44,30 @@ endef
 define Build/Configure
 	@echo 'Configure $(PKG_NAME) ...'
 	@$(call MESSAGE, "TEST ...")
+	@pwd
+	@ls
 endef
 
 define Build/Compile
 	@echo 'Compile $(PKG_NAME) ...'
-	$(TARGET_CC) $(TARGET_CFLAGS) -fPIC -o $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.o -c $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.c
-	$(TARGET_CC) $(TARGET_LDFLAGS) -shared -o $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.so $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.o -lfcgi
 endef
 
 define Build/Install
 	@echo 'Install $(PKG_NAME) ...'
-# 	$(call Build/Install/Default)
+	@pwd
+	@ls
 endef
 
-define Package/lua-wsapi-full/install
-	$(INSTALL_DIR) $(1)/usr/lib/lua
-	$(INSTALL_DATA) $(PKG_BUILD_DIR)/src/wsapi.lua $(1)/usr/lib/lua
+define Package/abba-lua-cgi/install
+##	$(INSTALL_DIR) $(1)/usr/lib/lua
+##	$(INSTALL_DATA) $(PKG_BUILD_DIR)/src/wsapi.lua $(1)/usr/lib/lua
 
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/launcher/wsapi.cgi $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/launcher/wsapi.fcgi $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/launchers/* $(1)/usr/bin
 
-	$(INSTALL_DIR) $(1)/usr/lib/lua/wsapi
-	$(INSTALL_DATA) $(PKG_BUILD_DIR)/src/wsapi/*.lua $(1)/usr/lib/lua/wsapi
-
-	$(INSTALL_DIR) $(1)/usr/lib/lua
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/fastcgi/lfcgi.so $(1)/usr/lib/lua/lfcgi.so
+	$(INSTALL_DIR) $(1)/usr/lib/lua/cgilua
+	$(INSTALL_DATA) $(PKG_BUILD_DIR)/src/cgilua/*.lua $(1)/usr/lib/lua/cgilua
 
 endef
 
-$(eval $(call BuildPackage,lua-wsapi-full))
+$(eval $(call BuildPackage,abba-lua-cgi))
