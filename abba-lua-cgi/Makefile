@@ -32,7 +32,7 @@ define Package/abba-lua-cgi
   SECTION:=myopenwrtpackages
   CATEGORY:=Extra packages
   TITLE:=Lua CGI
-  DEPENDS:=+lua-wsapi-full
+  DEPENDS:=+abba-lua-wsapi
 
 endef
 
