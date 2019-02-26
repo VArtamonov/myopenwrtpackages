@@ -28,17 +28,18 @@ PKG_SOURCE_VERSION:=master
 include $(INCLUDE_DIR)/package.mk
 
 define Package/abba-lua-wsapi
-  SUBMENU:=ABBA
-  SECTION:=myopenwrtpackages
-  CATEGORY:=Extra packages
-  TITLE:=Lua WSAPI FULL
-  DEPENDS:=+lua +liblua +luafilesystem +fcgi +lua-coxpcall +lua-rings
-
+	SUBMENU:=ABBA
+	SECTION:=myopenwrtpackages
+	CATEGORY:=Extra packages
+	TITLE:=Lua WSAPI
+	DEPENDS:=+lua +liblua +luafilesystem +fcgi +lua-coxpcall +lua-rings
 endef
 
 define Package/lua-wsapi-full/description
-  WSAPI is an API that abstracts the web server from Lua web applications.
-  This package contains the basic stuff.
+	WSAPI is an API that abstracts the web server from Lua web applications.
+	By coding against WSAPI your application can run on any of the supported
+	servers and interfaces (currently CGI, FastCGI and Xavante, on Windows
+	and UNIX-based systems).
 endef
 
 define Build/Configure

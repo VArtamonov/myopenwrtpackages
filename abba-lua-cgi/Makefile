@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=abba-lua-cgi
-PKG_VERSION:=1.7
+PKG_VERSION:=2019
 PKG_RELEASE:=1
 
 #PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -28,17 +28,17 @@ PKG_SOURCE_VERSION:=master
 include $(INCLUDE_DIR)/package.mk
 
 define Package/abba-lua-cgi
-  SUBMENU:=ABBA
-  SECTION:=myopenwrtpackages
-  CATEGORY:=Extra packages
-  TITLE:=Lua CGI
-  DEPENDS:=+abba-lua-wsapi
-
+	SUBMENU:=ABBA
+	SECTION:=myopenwrtpackages
+	CATEGORY:=Extra packages
+	TITLE:=CGILua
+	DEPENDS:=+abba-lua-wsapi
 endef
 
 define Package/lua-wsapi-full/description
-  WSAPI is an API that abstracts the web server from Lua web applications.
-  This package contains the basic stuff.
+	CGILua is a tool for creating dynamic Web pages and manipulating input data
+	from Web forms. CGILua allows the separation of logic and data handling from
+	the generation of pages, making it easy to develop web applications with Lua.
 endef
 
 define Build/Configure
