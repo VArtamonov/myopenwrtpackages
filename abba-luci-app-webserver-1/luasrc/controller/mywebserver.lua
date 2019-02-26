@@ -1,55 +1,55 @@
 --
 --
 --
-module("luci.controller.mywebserver.new_tab", package.seeall)  --notice that new_tab is the name of the file new_tab.lua
-
-local NX   = require "nixio"
-local NXFS = require "nixio.fs"
-local DISP = require "luci.dispatcher"
-local HTTP = require "luci.http"
-local I18N = require "luci.i18n" 		-- not globally avalible here
-local IPKG = require "luci.model.ipkg"
-local SYS  = require "luci.sys"
-local UCI  = require "luci.model.uci"
-local UTIL = require "luci.util"
+module("luci.controller.mywebserver", package.seeall)  --notice that new_tab is the name of the file new_tab.lua
 
 function index()
+	local uci	= require("luci.model.uci").cursor()
 	local nxfs	= require "nixio.fs"		-- global definitions not available
 	local sys	= require "luci.sys"		-- in function index()
-	local muci	= require "luci.model.uci"
+
+	local page
 
 	-- no config create an empty one
 	if not nxfs.access("/etc/config/mywebserver") then
 		nxfs.writefile("/etc/config/mywebserver", "")
 	end
 
-	entry({"admin", "WEB"}, firstchild(), "MYWEBSERVER", 60).dependent=false
---this adds the top level tab and defaults to the first sub-tab (tab_from_cbi), also it is set to position 30
+--	entry({"admin", "status"}, alias("admin", "status", "overview"), _("Status"), 20).index = true
+	entry({"admin", "mywebserver"}, firstchild(), _("MYWEBSERVER"), 60).index=true
+--	entry({"admin", "mywebserver"}, alias("admin", "mywebserver", "overview"))
+	entry({"admin", "mywebserver", "overview"}, cbi("mywebserver/mywebserver"), _("WEB Overview"), 10).dependent = true
 
-	entry({"admin", "WEB", "tab_from_cbi"}, cbi("mywebserver/cbi_tab"), "CBI Tab", 1)
---this adds the first sub-tab that is located in <luci-path>/luci-myapplication/model/cbi/myapp-mymodule and the file is called cbi_tab.lua, also set to first position
+--	page = entry({"admin", "network", "network"}, arcombine(cbi("admin_network/network"), cbi("admin_network/ifaces")), _("Interfaces"), 10)
+--	page.leaf   = true
+--	page.subindex = true
+--	if page.inreq then
+--		uci:foreach("network", "interface",
+--			function (section)
+--				local ifc = section[".name"]
+--				if ifc ~= "loopback" then
+--					entry({"admin", "network", "network", ifc}, true, ifc:upper())
+--				end
+--			end)
+--	end
 
--- entry({"admin", "WEB", "tab_from_view"}, template("mywebserver/view_tab"), "View Tab", 2)
--- this adds the second sub-tab that is located in <luci-path>/luci-myapplication/view/myapp-mymodule and the file is called view_tab.htm, also set to the second position
+	-- entry({"admin", "webserver", "logview"}, alias("admin", "webserver", "logview", "log1"), _("WEB Log view"), 20)
+-- , {hideapplybtn=true, hidesavebtn=true, hideresetbtn=true}
 
-	entry({"admin", "WEB", "web_log", "logview"}, call("logread") ).leaf = true
-
-end
-
-
--- called by XHR.get from detail_logview.htm
-function logread(section)
-	-- read application settings
-	local uci	= UCI.cursor()
-	local ldir	= uci:get("ddns", "global", "ddns_logdir") or "/var/log/ddns"
-	local lfile	= ldir .. "/" .. section .. ".log"
-
-	local ldata	= NXFS.readfile(lfile)
-	if not ldata or #ldata == 0 then
-		ldata="_nodata_"
+	page = entry({"admin", "mywebserver", "logview"}, 
+		arcombine(
+				cbi("mywebserver/mylogview-1"),
+				cbi("mywebserver/mylogview-2")
+			), _("WEB Log view"), 20)
+	page.leaf   = true
+	page.subindex = true
+	if page.inreq then
+		uci:foreach("mywebserver", "logview",
+			function (section)
+				local ifc = section.name
+--		entry({"admin", "mywebserver", "logview", "log1"}, true ,_("WEB Log view 1"))
+				entry({"admin", "mywebserver", "logview", ifc}, true ,_("WEB view ")..ifc)
+			end)
 	end
 
---	uci:unload("ddns")
-
-	HTTP.write(ldata)
 end
