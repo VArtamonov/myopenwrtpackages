@@ -64,7 +64,7 @@ define Package/abba-lua-mylib-1/install
 
 	$(INSTALL_DIR) $(1)/usr/lib/lua/mylib
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/*.lua $(1)/usr/lib/lua/mylib
-	$(INSTALL_DATA) $(PKG_BUILD_DIR)/*.fcgi $(1)/usr/lib/lua/mylib
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/*.fcgi $(1)/usr/lib/lua/mylib
 
 endef
 
