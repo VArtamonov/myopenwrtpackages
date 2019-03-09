@@ -28,8 +28,8 @@ local ONE_DAY = 24 * ONE_HOUR
 
 local sapi_loader = common.make_isolated_launcher{
   filename = nil,           -- if you want to force the launch of a single script
-  launcher = "cgilua.fcgi", -- the name of this launcher
-  modname = "my-sapi",   -- WSAPI application that processes the script
+  launcher = "my-server-1.fcgi", -- the name of this launcher
+  modname = "mylib.my-sapi",   -- WSAPI application that processes the script
   reload = true,            -- if you want to reload the application on every request
   period = ONE_HOUR,        -- frequency of Lua state staleness checks
   ttl = ONE_DAY,            -- time-to-live for Lua states

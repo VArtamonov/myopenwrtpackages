@@ -15,7 +15,7 @@ function _M.run(wsapi_env)
   _G.SAPI = {
 
     Info =  {
-      _COPYRIGHT = "Copyright (C) 2007 Kepler Project",
+      _COPYRIGHT = "Copyright (C) 2007 Kepler Project and ABBA 2019 (C) Project",
       _DESCRIPTION = "WSAPI SAPI implementation",
       _VERSION = "WSAPI SAPI 1.0",
       ispersistent = false,
