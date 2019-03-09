@@ -32,7 +32,7 @@ define Package/abba-lua-mylib-1
     SECTION:=myopenwrtpackages
     CATEGORY:=Extra packages
     TITLE:=LUA Lib user 1
-    DEPENDS:=+lsqlite3
+    DEPENDS:=+lsqlite3 +abba-lua-logging
 endef
 
 define Package/abba-lua-mylib-1/description
@@ -64,6 +64,7 @@ define Package/abba-lua-mylib-1/install
 
 	$(INSTALL_DIR) $(1)/usr/lib/lua/mylib
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/*.lua $(1)/usr/lib/lua/mylib
+	$(INSTALL_DATA) $(PKG_BUILD_DIR)/*.fcgi $(1)/usr/lib/lua/mylib
 
 endef
 
