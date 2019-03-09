@@ -4,3 +4,6 @@
 [submodule "fork-cgilua"]
 	path = fork-cgilua
 	url = git://github.com/vartamonov/fork-cgilua.git
+[submodule "fork-lualogging"]
+	path = fork-lualogging
+	url = https://github.com/VArtamonov/fork-lualogging

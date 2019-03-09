@@ -22,7 +22,7 @@ LUCI_TITLE:=LuCI application WEB server.
 
 LUCI_DESCRIPTION:=LuCI my web server
 
-LUCI_DEPENDS:=+abba-lua-cgi
+LUCI_DEPENDS:=+abba-lua-cgi +abba-lua-mylib-1
 
 include ../../luci/luci.mk
 

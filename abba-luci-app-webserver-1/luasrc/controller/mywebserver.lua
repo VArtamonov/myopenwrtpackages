@@ -20,6 +20,9 @@ function index()
 --	entry({"admin", "mywebserver"}, alias("admin", "mywebserver", "overview"))
 	entry({"admin", "mywebserver", "overview"}, cbi("mywebserver/mywebserver"), _("WEB Overview"), 10).dependent = true
 
+	entry({"admin", "mywebserver", "status"}, cbi("mywebserver/mystatus-1"), _("WEB Status"), 20).dependent = true
+
+
 --	page = entry({"admin", "network", "network"}, arcombine(cbi("admin_network/network"), cbi("admin_network/ifaces")), _("Interfaces"), 10)
 --	page.leaf   = true
 --	page.subindex = true
@@ -51,5 +54,7 @@ function index()
 				entry({"admin", "mywebserver", "logview", ifc}, true ,_("WEB view ")..ifc)
 			end)
 	end
+
+
 
 end

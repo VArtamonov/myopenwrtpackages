@@ -5,6 +5,9 @@ module("luci.tools.mywebserver", package.seeall)
 
 local uci = require "luci.model.uci".cursor()
 
+--local sqlite3 = require("lsqlite3")
+local dbo = require("mylib.my-database-tools")
+
 function get_nl(file)
 	nlines=0
 	lines = {}
@@ -33,3 +36,10 @@ function get_fnl(name)
 	return val
 end
 
+
+function get_ii()
+	local tab1 = {}
+	-- tab1 = dbo.GetInfoTable()
+	local ok, tab1 = xpcall(dbo.GetInfoTable, debug.traceback)
+	return tab1
+end
