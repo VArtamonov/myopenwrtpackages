@@ -41,16 +41,16 @@ define Package/abba-lua-mylib-1/description
 	the generation of pages, making it easy to develop web applications with Lua.
 endef
 
-#define Build/Configure
-#	@echo 'Configure $(PKG_NAME) ...'
-#	@$(call MESSAGE, "TEST ...")
-#	@pwd
-#	@ls
-#endef
+define Build/Configure
+	@echo 'Configure $(PKG_NAME) ...'
+	@$(call MESSAGE, "TEST ...")
+	@pwd
+	@ls
+endef
 
-#define Build/Compile
-#	@echo 'Compile $(PKG_NAME) ...'
-#endef
+define Build/Compile
+	@echo 'Compile $(PKG_NAME) ...'
+endef
 
 #define Build/Install
 #	@echo 'Install $(PKG_NAME) ...'
