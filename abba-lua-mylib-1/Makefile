@@ -41,22 +41,22 @@ define Package/abba-lua-mylib-1/description
 	the generation of pages, making it easy to develop web applications with Lua.
 endef
 
-define Build/Configure
-	@echo 'Configure $(PKG_NAME) ...'
-	@$(call MESSAGE, "TEST ...")
-	@pwd
-	@ls
-endef
+#define Build/Configure
+#	@echo 'Configure $(PKG_NAME) ...'
+#	@$(call MESSAGE, "TEST ...")
+#	@pwd
+#	@ls
+#endef
 
-define Build/Compile
-	@echo 'Compile $(PKG_NAME) ...'
-endef
+#define Build/Compile
+#	@echo 'Compile $(PKG_NAME) ...'
+#endef
 
-define Build/Install
-	@echo 'Install $(PKG_NAME) ...'
-	@pwd
-	@ls
-endef
+#define Build/Install
+#	@echo 'Install $(PKG_NAME) ...'
+#	@pwd
+#	@ls
+#endef
 
 define Package/abba-lua-mylib-1/install
 ##	$(INSTALL_DIR) $(1)/usr/lib/lua
@@ -65,7 +65,7 @@ define Package/abba-lua-mylib-1/install
 ##	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/launchers/* $(1)/usr/bin
 
 	$(INSTALL_DIR) $(1)/usr/lib/lua/mylib
-	$(INSTALL_DATA) $(PKG_BUILD_DIR)/files/*.lua $(1)/usr/lib/lua/mylib
+	$(INSTALL_DATA) $(PKG_BUILD_DIR)/src/*.lua $(1)/usr/lib/lua/mylib
 
 endef
 
