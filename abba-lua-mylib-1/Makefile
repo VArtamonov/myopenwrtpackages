@@ -28,17 +28,15 @@ PKG_RELEASE:=1
 include $(INCLUDE_DIR)/package.mk
 
 define Package/abba-lua-mylib-1
-	SUBMENU:=ABBA
-	SECTION:=myopenwrtpackages
-	CATEGORY:=Extra packages
-	TITLE:=LUA Lib user 1
-	DEPENDS:=+lua
+    SUBMENU:=ABBA
+    SECTION:=myopenwrtpackages
+    CATEGORY:=Extra packages
+    TITLE:=LUA Lib user 1
+    DEPENDS:=+lsqlite3
 endef
 
 define Package/abba-lua-mylib-1/description
-	CGILua is a tool for creating dynamic Web pages and manipulating input data
-	from Web forms. CGILua allows the separation of logic and data handling from
-	the generation of pages, making it easy to develop web applications with Lua.
+	LUA lib for database
 endef
 
 define Build/Configure
