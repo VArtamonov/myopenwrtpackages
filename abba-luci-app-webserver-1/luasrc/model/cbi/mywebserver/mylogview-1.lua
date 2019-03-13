@@ -40,6 +40,14 @@ s:option(DummyValue, "name", translate("Name"))
 s:option(DummyValue, "filename", translate("File Name"))
 s:option(DummyValue, "nlines", translate("Number lines"))
 
+hup = s:option(Button, "_clear", translate("Clear Log"))
+hup.inputstyle = "reset"
+function hup.write(self, section)
+	-- null, self.tag_error[section] = luci.sys.process.signal(section, 1)
+	luci.http.redirect(luci.dispatcher.build_url("admin/mywebserver", "logview"))
+end
+
+
 return m
 
 

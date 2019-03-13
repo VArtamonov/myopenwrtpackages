@@ -4,7 +4,7 @@ m = Map("mywebserver", translate("WEBSERVER"), translate("LIGHTTP"))
 --s = m:section(NamedSection, "config", "mywebserver", translate("WEBSERVER settings"))
 --s.addremove = false
 
-s = m:section(TypedSection, "webserver", translate("Server Settings"))
+s = m:section(TypedSection, "webserver", translate("Server Settings"), translate("test server setting"))
 s.anonymous = true
 s.addremove = false
 
@@ -20,9 +20,9 @@ lf = s:taboption("advanced", Value, "webservr_pid_file", translate("WEBSERVER PI
 lf.placeholder = "/var/run/webserver.pid"
 lf.default=lf.placeholder
 
-
-dbs = m:section(TypedSection, "database", translate("DataBase Server Settings"))
-dbs.anonymous = true
+-- DATABASE
+dbs = m:section(TypedSection, "database", translate("DataBase Server Settings"), translate("test database view"))
+dbs.anonymous = false
 dbs.addremove = false
 
 a1 = dbs:option(Value, "comment", translate("Comment"))
@@ -33,6 +33,14 @@ a2 = dbs:option(Value, "filename", translate("Filename databse of test"))
 a2.datatype = "file"
 a2.optional = true
 a2.placeholder = "database1.db"
+
+-- LOGVIEW
+logv = m:section(TypedSection, "logview", translate("LogView Server Settings"), translate("test log view"))
+logv.anonymous = false
+logv.addremove = false
+
+logv:option(Value, "name", translate("Log Name"))
+logv:option(Value, "filename", translate("Log File Name"))
 
 ---s:taboption("log", ListValue, "name", translate("Log Name"))
 ---s:taboption("log", ListValue, "filename", translate("Log File Name"))

@@ -78,9 +78,9 @@ end
 
 -- ExecuteScalar(
 
-function M.OpenDataBase()
-
-	db = sqlite3.open(M.GetFileName())
+function M.OpenDataBase(filename)
+ 	fn = filename or M.GetFileName()
+	db = sqlite3.open(fn)
 	db:exec[[
 BEGIN;
 PRAGMA FOREIGN_KEYS = ON;
@@ -133,9 +133,7 @@ function M.GetInfoTable()
 	local tab1= {}
 	
 	db = M.OpenDataBase()
-	for row in db:nrows[[
-SELECT * FROM TEST_IP;
-]] do
+	for row in db:nrows("SELECT * FROM TEST_IP ORDER BY NUM1 DESC;") do
 		local t1 = {}
 		-- { index, ip, name, dt, number }
 		t1.index = tostring(row.ID)
@@ -149,6 +147,13 @@ SELECT * FROM TEST_IP;
   	assert( db:close() )
 
 	return tab1
+end
+
+function M.DBClear(filename)
+	db = M.OpenDataBase()
+	assert(db:exec("DELETE FROM TEST_IP"))
+
+  	assert( db:close() )
 end
 
 return M

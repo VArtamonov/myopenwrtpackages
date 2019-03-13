@@ -43,3 +43,7 @@ function get_ii()
 	local ok, tab1 = xpcall(dbo.GetInfoTable, debug.traceback)
 	return tab1
 end
+
+function db_clear(filename)
+	dbo.DBClear(filename)
+end

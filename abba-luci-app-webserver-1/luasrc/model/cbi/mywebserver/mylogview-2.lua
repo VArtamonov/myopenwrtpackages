@@ -54,7 +54,7 @@ s:option(DummyValue, "str", translate("Message"))
 --s.template = "cbi/tblsection"
 --s.rmempty = true
 
-s.rows = 45
+s.rows = 80
 s.wrap = "off"
 s.linelog = ""
 s.data = getlinelog(s)
