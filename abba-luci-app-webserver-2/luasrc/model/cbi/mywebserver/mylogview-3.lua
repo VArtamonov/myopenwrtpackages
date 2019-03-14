@@ -19,7 +19,7 @@ local mws = require "luci.tools.mywebserver"		-- multiused functions
 
 local d = mws.get_fnl(arg[1])
 
-m = Form("mywebserver", translate("Log view").. " - '" .. d .."'", translate("Log view test"))
+m = SimpleForm("mywebserver", translate("Log view").. " - '" .. d .."'", translate("Log view test"))
 m.reset = false
 m.submit = false
 

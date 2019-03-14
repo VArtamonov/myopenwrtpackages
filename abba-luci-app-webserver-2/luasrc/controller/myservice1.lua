@@ -42,7 +42,7 @@ function index()
 	page = entry({"admin", "mywebserver", "logview"}, 
 		arcombine(
 				cbi("mywebserver/mylogview-1"),
-				cbi("mywebserver/mylogview-2",{hideapplybtn=true, hidesavebtn=true, hideresetbtn=true})
+				cbi("mywebserver/mylogview-2")
 			), _("WEB Log view"), 20)
 	page.leaf   = true
 	page.subindex = true

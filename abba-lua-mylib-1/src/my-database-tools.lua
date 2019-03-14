@@ -84,15 +84,21 @@ function M.OpenDataBase(filename)
 	db:exec[[
 BEGIN;
 PRAGMA FOREIGN_KEYS = ON;
-CREATE TABLE IF NOT EXISTS TEST_IP (ID INTEGER PRIMARY KEY AUTOINCREMENT, IP1 TEXT, NUM1 INTEGER, DT1 TEXT);
+CREATE TABLE IF NOT EXISTS TEST_IP (ID INTEGER PRIMARY KEY AUTOINCREMENT, IP1 TEXT, NUM1 INTEGER, DT1 TEXT, REQUEST TEXT, STATUS INTEGER);
 END;
 		]]
 	
 	return db
 end
 
-function M.LogToDataBase(str_ip, str_dt)
+function M.LogToDataBase(str_ip, str_dt, str_req, status)
 	local mcount = 0
+
+	local str_ip  = str_ip or ""
+	local str_dt  = str_dt or ""
+	local str_req = str_req or ""
+	local status = status or 0
+
 	db = M.OpenDataBase()
 	db:exec("BEGIN;")
 	--CREATE TABLE IF NOT EXISTS TEST_IP (ID INTEGER PRIMARY KEY AUTOINCREMENT, IP1 TEXT, NUM1 INTEGER, DT1 TEXT);
@@ -116,11 +122,11 @@ function M.LogToDataBase(str_ip, str_dt)
 
 	if (mcount==0 ) then
 		--print("ADD ->" .. mcount)
-		i2 = db:exec("INSERT INTO TEST_IP (IP1, DT1, NUM1) VALUES( '"..str_ip.."', '"..str_dt.."', 1);")
+		i2 = db:exec("INSERT INTO TEST_IP (IP1, DT1, NUM1, REQUEST, STATUS) VALUES( '"..str_ip.."', '"..str_dt.."', 1, '"..str_req.."', "..status..");")
 		assert(i2)
 	else
 		print("UPDATE ->" .. mcount)
-		i2 = db:exec("UPDATE TEST_IP SET NUM1=NUM1+1, DT1='"..str_dt.."' WHERE IP1=='"..str_ip.."';")
+		i2 = db:exec("UPDATE TEST_IP SET NUM1=NUM1+1, DT1='"..str_dt.."', REQUEST='".. str_req .. "', STATUS=".. status.." WHERE IP1=='"..str_ip.."';")
 		assert(i2)
 	end
 
@@ -141,6 +147,8 @@ function M.GetInfoTable()
 		t1.name = ""
 		t1.dt = tostring(row.DT1)
 		t1.number = tostring(row.NUM1)
+		t1.req = tostring(row.REQUEST)
+		t1.status = tostring(row.STATUS)
 		table.insert(tab1, t1)
 
 	end	

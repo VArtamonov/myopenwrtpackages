@@ -28,24 +28,22 @@ dbs.addremove = false
 a1 = dbs:option(Value, "comment", translate("Comment"))
 a1.datatype = "string"
 a1.placeholder = "database1"
-a1.readonly = true
 
 a2 = dbs:option(Value, "filename", translate("Filename databse of test"))
 a2.datatype = "file"
 a2.optional = true
 a2.placeholder = "database1.db"
-a2.readonly = true
 
 -- LOGVIEW
 logv = m:section(TypedSection, "logview", translate("LogView Server Settings"), translate("test log view"))
 logv.anonymous = false
 logv.addremove = false
 
-a3 = logv:option(Value, "name", translate("Log Name"))
-a3.readonly = true
+logv:option(Value, "name", translate("Log Name"))
+logv:option(Value, "filename", translate("Log File Name"))
 
-a4 = logv:option(Value, "filename", translate("Log File Name"))
-a4.readonly = true
-a4.datatype = "file"
+---s:taboption("log", ListValue, "name", translate("Log Name"))
+---s:taboption("log", ListValue, "filename", translate("Log File Name"))
+
 
 return m

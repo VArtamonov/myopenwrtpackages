@@ -4,7 +4,7 @@
 local uci = require "luci.model.uci"
 local mws = require "luci.tools.mywebserver"		-- multiused functions
 
-m = Map("mywebserver", translate("Status view"), translate("This list status."))
+local m = Map("mywebserver", translate("Status view"), translate("This list status."))
 --m:chain("mywebserver")
 m.pageaction = false
 
@@ -38,8 +38,6 @@ s:option(DummyValue, "ip", translate("IP Address"))
 s:option(DummyValue, "name", translate("Host name"))
 s:option(DummyValue, "dt", translate("Last Date/Time"))
 s:option(DummyValue, "number", translate("Number connection"))
-s:option(DummyValue, "req", translate("REQUEST_METHOD"))
-s:option(DummyValue, "status", translate("STATUS"))
 
 return m
 

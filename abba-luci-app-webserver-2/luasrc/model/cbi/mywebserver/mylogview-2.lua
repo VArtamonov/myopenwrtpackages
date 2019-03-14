@@ -12,13 +12,11 @@ local section = arg[1]
 
 local d = mws.get_fnl(section)
 
-m = Map("mywebserver")
+m = SimpleForm("mywebserver")
 m.title = translate("Log view")
 m.description = translate("File: ") .. "'" .. d .."'"
-m.pageaction = true
-m.flow.hideapplybtn = true
-m.flow.hidesavebtn = true
-m.flow.hideresetbtn = true
+m.reset = false
+m.submit = false
 
 local function getlinelog(self)
 	line = {}
