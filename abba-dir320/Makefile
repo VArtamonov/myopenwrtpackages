@@ -23,7 +23,7 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/kernel.mk
 
 # Package definition; instructs on how and where our package will appear in the overall configuration menu ('make menuconfig')
-define Package/abba-dir320/Default
+define Package/abba-dir320
  SUBMENU:=ABBA
  SECTION:=myopenwrtpackages
  CATEGORY:=Extra packages
@@ -68,15 +68,24 @@ define Build/Prepare
 endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
-define Build/Compile
-#	echo '...'
-#	echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+define Build/Compile/abba-dir320
+	echo '...'
+	echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 #	$(Build/Compile/Default)
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 	    CC="$(TARGET_CC)" \
 	    CFLAGS="$(TARGET_CFLAGS)" \
 	    LDFLAGS="$(TARGET_LDFLAGS)"
 	    $(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
+endef
+
+define BuildPackage/abba-dir320/Defaults
+#  Build/Configure/Default = $$$$(Build/Configure/AT91Bootstrap)
+  Build/Compile/Default = $$$$(Build/Compile/abba-dir320)
+endef
+
+define BuildPackage/abba-dir320
+  $(eval $(call BuildPackage/abba-dir320/Defaults))
 endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
