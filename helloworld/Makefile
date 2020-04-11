@@ -47,9 +47,9 @@ endef
 #	$(CP) ./files/* $(PKG_BUILD_DIR)
 #endef
 
-define Build/Configure
-	echo 'Configure $(PKG_NAME) ...'
-endef
+#define Build/Configure
+#	echo 'Configure $(PKG_NAME) ...'
+#endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
 #define Build/Compile
