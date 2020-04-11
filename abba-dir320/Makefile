@@ -36,7 +36,7 @@ define KernelPackage/abba-dir320-detect
 	SECTION:=myopenwrtpackages
 	DEPENDS:=@(TARGET_brcm47xx||TARGET_brcm63xx)
 	TITLE:=Kernel driver for D-LINK DIR-320A
-	FILES:=$(PKG_BUILD_DIR)/driver/button-hotplug.ko
+	FILES:=$(PKG_BUILD_DIR)/driver/abba_dir320_test.ko
 	AUTOLOAD:=$(call AutoProbe,10,abba-dir320-detect)
 endef
 
@@ -47,25 +47,6 @@ endef
 
 define KernelPackage/abba-dir320-detect/description
 	This package contains the proprietary wireless driver for the D-LINK DIR-320A.
-endef
-
-EXTRA_KCONFIG:= \
-	CONFIG_ABBA_DIR320_TEST=m
-
-EXTRA_CFLAGS:= \
-	$(patsubst CONFIG_%, -DCONFIG_%=1, $(patsubst %=m,%,$(filter %=m,$(EXTRA_KCONFIG)))) \
-	$(patsubst CONFIG_%, -DCONFIG_%=1, $(patsubst %=y,%,$(filter %=y,$(EXTRA_KCONFIG)))) \
-
-MAKE_OPTS:= \
-	$(KERNEL_MAKE_FLAGS) \
-	SUBDIRS="$(PKG_BUILD_DIR)\driver" \
-	EXTRA_CFLAGS="$(EXTRA_CFLAGS)" \
-	$(EXTRA_KCONFIG)
-
-define Build/Compile
-	$(MAKE) -C "$(LINUX_DIR)" \
-		$(MAKE_OPTS) \
-		modules
 endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
