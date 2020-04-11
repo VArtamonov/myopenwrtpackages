@@ -75,13 +75,13 @@ define Build/Prepare
 #	$(CP) ./src/glue $(PKG_BUILD_DIR)/glue
 endef
 
-#define Build/Configure
-#	echo 'Configure $(PKG_NAME) ...'
-#endef
+define Build/Configure
+	echo 'Configure $(PKG_NAME) ...'
+endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
-#define Build/Compile
-#	@echo Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...
+define Build/Compile
+	@echo Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...
 #	$(MAKE) -C $(PKG_BUILD_DIR) \
 #		CC="$(TARGET_CC)" \
 #		CFLAGS="$(TARGET_CFLAGS)" \
@@ -94,13 +94,14 @@ endef
 #	$(TARGET_CC) -o $(PKG_BUILD_DIR)/abba-dir320-test \
 #		-I$(PKG_BUILD_DIR)/shared -I$(PKG_BUILD_DIR)/driver/include \
 #		./src/dir320-test.c $(PKG_BUILD_DIR)/shared/libshared.a
-#endef
+endef
 
 # Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
-#define Package/abba-dir320/install
+define Package/abba-dir320-test/install
+	@echo Install $(PKG_NAME) to $(PKG_BUILD_DIR) ...
 #	$(INSTALL_DIR) $(1)/usr/bin
 #	$(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/usr/bin
-#endef
+endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
 #$(eval $(call KernelPackage,abba-dir320-detect))
