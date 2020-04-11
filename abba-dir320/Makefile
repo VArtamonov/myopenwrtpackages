@@ -34,10 +34,10 @@ endef
 
 define KernelPackage/abba-dir320-detect
 	SECTION:=myopenwrtpackages
-	DEPENDS:=@(TARGET_brcm47xx||TARGET_brcm63xx) +wireless-tools
+	DEPENDS:=@(TARGET_brcm47xx||TARGET_brcm63xx)
 	TITLE:=Kernel driver for D-LINK DIR-320A
 	FILES:=$(PKG_BUILD_DIR)/driver/wl_glue.ko
-	AUTOLOAD:=$(call AutoProbe,abba-dir320-detect)
+	AUTOLOAD:=$(call AutoProbe,10,abba-dir320-detect)
 endef
 
 # Package description; a more verbose description on what our package does
