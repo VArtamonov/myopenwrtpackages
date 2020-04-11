@@ -68,7 +68,7 @@ define Build/Prepare
 endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
-define Build/Compile
+define Build/Compile1
 	@echo '...'
 	@echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	$(Build/Compile/Default)
