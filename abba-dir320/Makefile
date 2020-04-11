@@ -33,7 +33,7 @@ define Package/abba-dir320-test
     SECTION:=myopenwrtpackages
     CATEGORY:=Extra packages
     TITLE:=Proprietary D-DLINK DIR-320 driver test
-#    DEPENDS:=@(PACKAGE_kmod-abba-dir320-detect)
+#DEPENDS:=@(PACKAGE_kmod-abba-dir320-detect)
 #SUBMENUDEP:=(TARGET_brcm47xx||TARGET_brcm63xx)
 endef
 
