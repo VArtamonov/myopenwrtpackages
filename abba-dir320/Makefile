@@ -36,7 +36,7 @@ define KernelPackage/abba-dir320-detect
 	SECTION:=myopenwrtpackages
 	DEPENDS:=@(TARGET_brcm47xx||TARGET_brcm63xx)
 	TITLE:=Kernel driver for D-LINK DIR-320A
-	FILES:=$(PKG_BUILD_DIR)/driver/wl_glue.ko
+	FILES:=$(PKG_BUILD_DIR)/driver/button-hotplug.ko
 	AUTOLOAD:=$(call AutoProbe,10,abba-dir320-detect)
 endef
 
@@ -90,7 +90,7 @@ define Build/Compile
 #	$(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
 
 	# Compile driver
-	$(KERNEL_MAKE) SUBDIRS="$(PKG_BUILD_DIR)" modules
+	$(KERNEL_MAKE) SUBDIRS="$(PKG_BUILD_DIR)\driver" modules
 
 #	$(MAKE_KMOD) -C "$(LINUX_DIR)" \
 #		SUBDIRS="$(PKG_BUILD_DIR)/driver" \
