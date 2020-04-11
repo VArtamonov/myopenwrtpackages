@@ -49,61 +49,24 @@ define KernelPackage/abba-dir320-detect/description
 	This package contains the proprietary wireless driver for the D-LINK DIR-320A.
 endef
 
-#include $(INCLUDE_DIR)/kernel-defaults.mk
+EXTRA_KCONFIG:= \
+	CONFIG_ABBA_DIR320_TEST=m
 
+EXTRA_CFLAGS:= \
+	$(patsubst CONFIG_%, -DCONFIG_%=1, $(patsubst %=m,%,$(filter %=m,$(EXTRA_KCONFIG)))) \
+	$(patsubst CONFIG_%, -DCONFIG_%=1, $(patsubst %=y,%,$(filter %=y,$(EXTRA_KCONFIG)))) \
 
-# Source settings (i.e. where to find the source codes)
-# This is		 a custom variable, used below
-#USE_SOURCE_DIR:=files
-#MAKE_PATH:=src
+MAKE_OPTS:= \
+	$(KERNEL_MAKE_FLAGS) \
+	SUBDIRS="$(PKG_BUILD_DIR)\driver" \
+	EXTRA_CFLAGS="$(EXTRA_CFLAGS)" \
+	$(EXTRA_KCONFIG)
 
-#MAKE_KMOD := $(MAKE) -C "$(LINUX_DIR)" \
-#		$(KERNEL_MAKE_FLAGS) \
-#		PATH="$(TARGET_PATH)" \
-#		SUBDIRS="$(PKG_BUILD_DIR)/kmod" \
-
-
-# Package preparation instructions; create the build directory and copy the source code. 
-# The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
-#define Build/Prepare
-#	echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-#	mkdir -p $(PKG_BUILD_DIR)
-#	$(CP) ./files/* $(PKG_BUILD_DIR)
-#	$(call Build/Prepare/Default)
-#	$(CP) ./src/glue $(PKG_BUILD_DIR)/glue
-#endef
-
-#define Build/Configure
-#	echo 'Configure $(PKG_NAME) ...'
-#endef
-
-# Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
-#define Build/Compile
-#	$(KERNEL_MAKE) SUBDIRS="$(PKG_BUILD_DIR)" modules
-#endef
-#define Build/Compile
-#	@echo Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...
-#	$(MAKE) -C $(PKG_BUILD_DIR) \
-#		CC="$(TARGET_CC)" \
-#		CFLAGS="$(TARGET_CFLAGS)" \
-#		LDFLAGS="$(TARGET_LDFLAGS)"
-#	$(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
-#	# Compile driver
-#	$(KERNEL_MAKE) SUBDIRS="$(PKG_BUILD_DIR)\driver" modules
-#	$(MAKE_KMOD) -C "$(LINUX_DIR)" \
-#		SUBDIRS="$(PKG_BUILD_DIR)/driver" \
-#		modules
-#	$(TARGET_CC) -o $(PKG_BUILD_DIR)/abba-dir320-test \
-#		-I$(PKG_BUILD_DIR)/shared -I$(PKG_BUILD_DIR)/driver/include \
-#		./src/dir320-test.c $(PKG_BUILD_DIR)/shared/libshared.a
-#endef
-
-# Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
-#define Package/abba-dir320-test/install
-#	@echo Install $(PKG_NAME) to $(PKG_BUILD_DIR) ...
-#	$(INSTALL_DIR) $(1)/usr/bin
-#	$(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/usr/bin
-#endef
+define Build/Compile
+	$(MAKE) -C "$(LINUX_DIR)" \
+		$(MAKE_OPTS) \
+		modules
+endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
 $(eval $(call KernelPackage,abba-dir320-detect))

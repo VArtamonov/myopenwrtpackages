@@ -1,2 +1,2 @@
-config BUTTON_HOTPLUG
-	tristate "Button Hotplug driver"
+config ABBA_DIR320_TEST
+	tristate "ABBA DIR-320 test driver"

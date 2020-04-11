@@ -1,1 +1,1 @@
-obj-${CONFIG_BUTTON_HOTPLUG}	+= button-hotplug.o
+obj-${CONFIG_ABBA_DIR320_TEST}	+= abba_dir320_test.o
