@@ -24,34 +24,29 @@ include $(INCLUDE_DIR)/package.mk
 
 # Package definition; instructs on how and where our package will appear in the overall configuration menu ('make menuconfig')
 define Package/abba-dir320
-#    SECTION:=kernel
-#    CATEGORY:=Kernel modules
-#    DEPENDS:=@(PACKAGE_kmod-abba-dir320-detect)
-#    SUBMENU:=Proprietary D-DLINK DIR-320 driver test
-#    SUBMENUDEP:=(TARGET_brcm47xx||TARGET_brcm63xx)
- SUBMENU:=ABBA
- SECTION:=myopenwrtpackages
- CATEGORY:=Extra packages
- TITLE:=Proprietary D-DLINK DIR-320 driver test
-#DEPENDS:=@(PACKAGE_kmod-abba-dir320-detect)
-#SUBMENUDEP:=(TARGET_brcm47xx||TARGET_brcm63xx)
+	SUBMENU:=ABBA
+	SECTION:=myopenwrtpackages
+	CATEGORY:=Extra packages
+	TITLE:=Proprietary D-DLINK DIR-320 driver test
+#	DEPENDS:=@(PACKAGE_kmod-abba-dir320-detect)
+#	SUBMENUDEP:=(TARGET_brcm47xx||TARGET_brcm63xx)
 endef
 
 define KernelPackage/abba-dir320-detect
- SECTION:=myopenwrtpackages
- DEPENDS:=@(TARGET_brcm47xx||TARGET_brcm63xx) +wireless-tools
- TITLE:=Kernel driver for D-LINK DIR-320A
- FILES:=$(PKG_BUILD_DIR)/glue/wl_glue.ko
- AUTOLOAD:=$(call AutoProbe,abba-dir320-detect)
+	SECTION:=myopenwrtpackages
+	DEPENDS:=@(TARGET_brcm47xx||TARGET_brcm63xx) +wireless-tools
+	TITLE:=Kernel driver for D-LINK DIR-320A
+	FILES:=$(PKG_BUILD_DIR)/glue/wl_glue.ko
+	AUTOLOAD:=$(call AutoProbe,abba-dir320-detect)
 endef
 
 # Package description; a more verbose description on what our package does
 define Package/abba-dir320/description
- This package contains the proprietary wireless driver for the D-LINK DIR-320A.
+	This package contains the proprietary wireless driver for the D-LINK DIR-320A.
 endef
 
 define KernelPackage/abba-dir320-detect/description
- This package contains the proprietary wireless driver for the D-LINK DIR-320A.
+	This package contains the proprietary wireless driver for the D-LINK DIR-320A.
 endef
 
 # Source settings (i.e. where to find the source codes)
