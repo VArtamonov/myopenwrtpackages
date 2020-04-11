@@ -83,10 +83,11 @@ MAKE_KMOD := $(MAKE) -C "$(LINUX_DIR)" \
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
 define Build/Compile
 	@echo Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...
-#	$(MAKE) -C $(PKG_BUILD_DIR) \
-#		CC="$(TARGET_CC)" \
-#		CFLAGS="$(TARGET_CFLAGS)" \
-#		LDFLAGS="$(TARGET_LDFLAGS)"
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		CC="$(TARGET_CC)" \
+		CFLAGS="$(TARGET_CFLAGS)" \
+		LDFLAGS="$(TARGET_LDFLAGS)"
+
 #	$(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
 #	# Compile glue driver
 #	$(MAKE_KMOD) -C "$(LINUX_DIR)" \
