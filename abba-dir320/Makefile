@@ -84,7 +84,7 @@ endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/shared/libshared.a $(1)/usr/lib/
+#	$(CP) $(PKG_BUILD_DIR)/shared/libshared.a $(1)/usr/lib/
 endef
 
 
