@@ -28,7 +28,7 @@ define Package/abba-dir320
  SECTION:=myopenwrtpackages
  CATEGORY:=Extra packages
  TITLE:=Proprietary D-DLINK DIR-320 driver test
-# DEPENDS:=@(PACKAGE_kmod-abba-dir320-detect)
+ DEPENDS:=@(PACKAGE_kmod-abba-dir320-detect)
 # SUBMENUDEP:=(TARGET_brcm47xx)
 endef
 
@@ -70,11 +70,12 @@ endef
 define Build/Compile
 	@echo '...'
 	@echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		CC="$(TARGET_CC)" \
-		CFLAGS="$(TARGET_CFLAGS)" \
-		LDFLAGS="$(TARGET_LDFLAGS)"
-	$(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
+	$(Build/Compile/Default)
+#	$(MAKE) -C $(PKG_BUILD_DIR) \
+#		CC="$(TARGET_CC)" \
+#		CFLAGS="$(TARGET_CFLAGS)" \
+#		LDFLAGS="$(TARGET_LDFLAGS)"
+#	$(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
 endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
