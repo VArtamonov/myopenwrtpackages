@@ -57,8 +57,7 @@ endef
 # Source settings (i.e. where to find the source codes)
 # This is		 a custom variable, used below
 #USE_SOURCE_DIR:=files
-
-MAKE_PATH:=src
+#MAKE_PATH:=src
 
 MAKE_KMOD := $(MAKE) -C "$(LINUX_DIR)" \
 		$(KERNEL_MAKE_FLAGS) \
@@ -68,13 +67,13 @@ MAKE_KMOD := $(MAKE) -C "$(LINUX_DIR)" \
 
 # Package preparation instructions; create the build directory and copy the source code. 
 # The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
-#define Build/Prepare
-#	echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+define Build/Prepare
+	echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 #	mkdir -p $(PKG_BUILD_DIR)
 #	$(CP) ./files/* $(PKG_BUILD_DIR)
 #	$(call Build/Prepare/Default)
 #	$(CP) ./src/glue $(PKG_BUILD_DIR)/glue
-#endef
+endef
 
 #define Build/Configure
 #	echo 'Configure $(PKG_NAME) ...'
