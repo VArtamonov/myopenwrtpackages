@@ -9,11 +9,11 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=abba-dir320
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
-PKG_LICENSE:=MIT
+
+#PKG_LICENSE:=MIT
 
 #
-PKG_BUILD_DIR=$(BUILD_DIR)/$(PKG_NAME)-$(BUILD_VARIANT)
-
+# PKG_BUILD_DIR=$(BUILD_DIR)/$(PKG_NAME)-$(BUILD_VARIANT)
 #
 # Source settings (i.e. where to find the source codes)
 # This is a custom variable, used below
@@ -44,7 +44,7 @@ endef
 
 # Package description; a more verbose description on what our package does
 define Package/abba-dir320/description
-	This package contains the proprietary wireless driver for the D-LINK DIR-320A.
+ This package contains the proprietary wireless driver for the D-LINK DIR-320A.
 endef
 
 #define KernelPackage/abba-dir320-detect/description
