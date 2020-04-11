@@ -42,14 +42,15 @@ endef
 # The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
 define Build/Prepare
 	echo '...'
-	echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-	mkdir -p $(PKG_BUILD_DIR)
-	$(CP) ./files/* $(PKG_BUILD_DIR)
+	@echo 'MAKE_PATH = $(MAKE_PATH)'
+	@echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+	$(Build/Prepare/Default)
 endef
 
-#define Build/Configure
-#	echo 'Configure $(PKG_NAME) ...'
-#endef
+define Build/Configure
+	echo 'Configure $(PKG_NAME) ...'
+	true
+endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
 define Build/Compile
