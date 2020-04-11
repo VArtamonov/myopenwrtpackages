@@ -46,7 +46,7 @@ define KernelPackage/abba-dir320-detect
 endef
 
 # Package description; a more verbose description on what our package does
-define Package/abba-dir320/description
+define Package/abba-dir320-test/description
     This package contains the proprietary wireless driver for the D-LINK DIR-320A.
 endef
 
@@ -81,13 +81,12 @@ MAKE_KMOD := $(MAKE) -C "$(LINUX_DIR)" \
 #endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
-define Build/Compile
-	@echo Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		CC="$(TARGET_CC)" \
-		CFLAGS="$(TARGET_CFLAGS)" \
-		LDFLAGS="$(TARGET_LDFLAGS)"
-
+#define Build/Compile
+#	@echo Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...
+#	$(MAKE) -C $(PKG_BUILD_DIR) \
+#		CC="$(TARGET_CC)" \
+#		CFLAGS="$(TARGET_CFLAGS)" \
+#		LDFLAGS="$(TARGET_LDFLAGS)"
 #	$(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
 #	# Compile glue driver
 #	$(MAKE_KMOD) -C "$(LINUX_DIR)" \
@@ -96,7 +95,7 @@ define Build/Compile
 #	$(TARGET_CC) -o $(PKG_BUILD_DIR)/abba-dir320-test \
 #		-I$(PKG_BUILD_DIR)/shared -I$(PKG_BUILD_DIR)/driver/include \
 #		./src/dir320-test.c $(PKG_BUILD_DIR)/shared/libshared.a
-endef
+#endef
 
 # Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
 #define Package/abba-dir320/install
@@ -105,6 +104,6 @@ endef
 #endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
-$(eval $(call KernelPackage,abba-dir320-detect))
+#$(eval $(call KernelPackage,abba-dir320-detect))
 $(eval $(call BuildPackage,abba-dir320-test))
 
