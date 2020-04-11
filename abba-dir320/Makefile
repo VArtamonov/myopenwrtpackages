@@ -32,11 +32,11 @@ define Package/abba-dir320
 	SUBMENUDEP:=(TARGET_brcm47xx||TARGET_brcm63xx)
 endef
 
-define KernelPackage/abba-dir320-detect
+define KernelPackage/driver/abba-dir320-detect
 #	SECTION:=myopenwrtpackages
 #	DEPENDS:=@(TARGET_brcm47xx||TARGET_brcm63xx)
 	TITLE:=Kernel driver for D-LINK DIR-320A
-	FILES:=$(PKG_BUILD_DIR)/driver/abba_dir320_test.ko
+#	FILES:=$(PKG_BUILD_DIR)/driver/abba_dir320_test.ko
 #	AUTOLOAD:=$(call AutoProbe,10,abba-dir320-detect)
 endef
 
