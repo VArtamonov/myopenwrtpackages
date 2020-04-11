@@ -49,6 +49,9 @@ define KernelPackage/abba-dir320-detect/description
 	This package contains the proprietary wireless driver for the D-LINK DIR-320A.
 endef
 
+MAKE_PATH := setup/;driver/
+
+
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
 $(eval $(call KernelPackage,abba-dir320-detect))
 $(eval $(call BuildPackage,abba-dir320))
