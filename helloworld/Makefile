@@ -40,12 +40,12 @@ endef
 
 # Package preparation instructions; create the build directory and copy the source code. 
 # The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
-#define Build/Prepare
-#	echo '...'
-#	@echo 'MAKE_PATH = $(MAKE_PATH)'
-#	@echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-#	$(Build/Prepare/Default)
-#endef
+define Build/Prepare
+	echo '...'
+	@echo 'MAKE_PATH = $(MAKE_PATH)'
+	@echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+	$(Build/Prepare/Default)
+endef
 
 #define Build/Configure
 #	echo 'Configure $(PKG_NAME) ...'
