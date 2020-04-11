@@ -24,21 +24,21 @@ include $(INCLUDE_DIR)/package.mk
 
 # Package definition; instructs on how and where our package will appear in the overall configuration menu ('make menuconfig')
 define Package/abba-dir320
- SUBMENU:=ABBA
- SECTION:=myopenwrtpackages
- CATEGORY:=Extra packages
- TITLE:=Proprietary D-DLINK DIR-320 driver test
-#DEPENDS:=@(PACKAGE_kmod-abba-dir320-detect)
-#SUBMENUDEP:=(TARGET_brcm47xx)
+  SUBMENU:=ABBA
+  SECTION:=myopenwrtpackages
+  CATEGORY:=Extra packages
+  TITLE:=Proprietary D-DLINK DIR-320 driver test
+  DEPENDS:=@(PACKAGE_kmod-abba-dir320-detect)
+  SUBMENUDEP:=(TARGET_brcm47xx)
 endef
 
 define KernelPackage/abba-dir320-detect
- $(call Package/abba-dir320)
- SECTION:=myopenwrtpackages
- DEPENDS:=@(TARGET_brcm47xx)
- TITLE:=Kernel driver for D-LINK DIR-320A
-# FILES:=$(PKG_BUILD_DIR)/driver/abba_dir320_test.o
- AUTOLOAD:=$(call AutoProbe,10,abba-dir320-detect)
+  $(call Package/abba-dir320)
+  SECTION:=myopenwrtpackages
+  DEPENDS:=@(TARGET_brcm47xx)
+  TITLE:=Kernel driver for D-LINK DIR-320A
+  FILES:=$(PKG_BUILD_DIR)/driver/abba_dir320_test.o
+  AUTOLOAD:=$(call AutoProbe,10,abba-dir320-detect)
 #endef
 
 # Package description; a more verbose description on what our package does
@@ -46,9 +46,9 @@ define Package/abba-dir320/description
  This package contains the proprietary wireless driver for the D-LINK DIR-320A.
 endef
 
-#define KernelPackage/abba-dir320-detect/description
-#	This package contains the proprietary wireless driver for the D-LINK DIR-320A.
-#endef
+define KernelPackage/abba-dir320-detect/description
+ This package contains the proprietary wireless driver for the D-LINK DIR-320A.
+endef
 
 # MAKE_PATH := setup;driver
 
@@ -78,6 +78,12 @@ define Build/Compile/abba-dir320
 #	    LDFLAGS="$(TARGET_LDFLAGS)"
 #	    $(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
 endef
+
+define Build/InstallDev
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/shared/libshared.a $(1)/usr/lib/
+endef
+
 
 # Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
 define Package/abba-dir320/install
