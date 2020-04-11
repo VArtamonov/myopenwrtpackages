@@ -28,16 +28,16 @@ define Package/abba-dir320
  SECTION:=myopenwrtpackages
  CATEGORY:=Extra packages
  TITLE:=Proprietary D-DLINK DIR-320 driver test
- DEPENDS:=@(PACKAGE_kmod-abba-dir320-detect)
- SUBMENUDEP:=(TARGET_brcm47xx)
+# DEPENDS:=@(PACKAGE_kmod-abba-dir320-detect)
+# SUBMENUDEP:=(TARGET_brcm47xx)
 endef
 
 define KernelPackage/abba-dir320-detect
- $(call Package/abba-dir320)
+# $(call Package/abba-dir320)
  SECTION:=myopenwrtpackages
  DEPENDS:=@(TARGET_brcm47xx)
  TITLE:=Kernel driver for D-LINK DIR-320A
- FILES:=$(PKG_BUILD_DIR)/driver/abba_dir320_test.o
+# FILES:=$(PKG_BUILD_DIR)/driver/abba_dir320_test.o
  AUTOLOAD:=$(call AutoProbe,10,abba-dir320-detect)
 endef
 
@@ -68,6 +68,7 @@ endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
 define Build/Compile
+	@echo '...'
 	@echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		CC="$(TARGET_CC)" \
