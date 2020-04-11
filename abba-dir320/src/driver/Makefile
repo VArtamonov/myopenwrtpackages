@@ -1,1 +1,0 @@
-obj-${CONFIG_ABBA_DIR320_TEST}	+= abba_dir320_test.o

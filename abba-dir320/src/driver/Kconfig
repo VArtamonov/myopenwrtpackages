@@ -1,2 +1,0 @@
-config ABBA_DIR320_TEST
-	tristate "ABBA DIR-320 test driver"
