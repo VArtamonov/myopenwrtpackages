@@ -90,10 +90,11 @@ define Build/Compile
 #	$(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
 
 	# Compile driver
-	$(MAKE_KMOD) -C "$(LINUX_DIR)" \
-		SUBDIRS="$(PKG_BUILD_DIR)/driver" \
-		modules
+	$(KERNEL_MAKE) SUBDIRS="$(PKG_BUILD_DIR)" modules
 
+#	$(MAKE_KMOD) -C "$(LINUX_DIR)" \
+#		SUBDIRS="$(PKG_BUILD_DIR)/driver" \
+#		modules
 #	$(TARGET_CC) -o $(PKG_BUILD_DIR)/abba-dir320-test \
 #		-I$(PKG_BUILD_DIR)/shared -I$(PKG_BUILD_DIR)/driver/include \
 #		./src/dir320-test.c $(PKG_BUILD_DIR)/shared/libshared.a
