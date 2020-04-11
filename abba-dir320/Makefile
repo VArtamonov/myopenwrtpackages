@@ -58,35 +58,26 @@ endef
 
 # Package preparation instructions; create the build directory and copy the source code. 
 # The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
-#define Build/Prepare
-#	@echo '...'
-#	@echo 'MAKE_PATH = $(MAKE_PATH)'
-#	@echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-#	$(Build/Prepare/Default)
+define Build/Prepare
+	@echo '...'
+	@echo 'MAKE_PATH = $(MAKE_PATH)'
+	@echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+	$(Build/Prepare/Default)
 #	@mkdir -p $(PKG_BUILD_DIR)
 #	$(CP) ./* $(PKG_BUILD_DIR)
-#endef
+endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
-#define Build/Compile/abba-dir320
-#	echo '...'
-#	echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-#	$(Build/Compile/Default)
+define Build/Compile/abba-dir320
+	echo '...'
+	echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+	$(Build/Compile/Default)
 #	$(MAKE) -C $(PKG_BUILD_DIR) \
 #	    CC="$(TARGET_CC)" \
 #	    CFLAGS="$(TARGET_CFLAGS)" \
 #	    LDFLAGS="$(TARGET_LDFLAGS)"
 #	    $(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
-#endef
-
-#define BuildPackage/abba-dir320/Defaults
-#  Build/Configure/Default = $$$$(Build/Configure/AT91Bootstrap)
-#  Build/Compile/Default = $$$$(Build/Compile/abba-dir320)
-#endef
-
-#define BuildPackage/abba-dir320
-#  $(eval $(call BuildPackage/abba-dir320/Defaults))
-#endef
+endef
 
 # Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
 define Package/abba-dir320/install
