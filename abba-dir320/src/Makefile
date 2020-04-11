@@ -1,0 +1,4 @@
+#
+#
+all:
+    @echo 'Make all ...'
