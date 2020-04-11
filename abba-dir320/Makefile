@@ -57,10 +57,10 @@ include $(INCLUDE_DIR)/kernel-defaults.mk
 #USE_SOURCE_DIR:=files
 #MAKE_PATH:=src
 
-MAKE_KMOD := $(MAKE) -C "$(LINUX_DIR)" \
-		$(KERNEL_MAKE_FLAGS) \
-		PATH="$(TARGET_PATH)" \
-		SUBDIRS="$(PKG_BUILD_DIR)/kmod" \
+#MAKE_KMOD := $(MAKE) -C "$(LINUX_DIR)" \
+#		$(KERNEL_MAKE_FLAGS) \
+#		PATH="$(TARGET_PATH)" \
+#		SUBDIRS="$(PKG_BUILD_DIR)/kmod" \
 
 
 # Package preparation instructions; create the build directory and copy the source code. 
