@@ -40,30 +40,32 @@ endef
 
 # Package preparation instructions; create the build directory and copy the source code. 
 # The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
-define Build/Prepare
-	@echo '...'
-	@echo 'MAKE_PATH = $(MAKE_PATH)'
-	@echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-	$(Build/Prepare/Default)
-endef
+#define Build/Prepare
+#	echo '...'
+#	echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+#	mkdir -p $(PKG_BUILD_DIR)
+#	$(CP) ./files/* $(PKG_BUILD_DIR)
+#endef
 
 #define Build/Configure
-#	@echo 'Configure $(PKG_NAME) ...'
+#	echo 'Configure $(PKG_NAME) ...'
 #endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
-define Build/Compile
-	@echo '...'
-	@echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-	$(TARGET_CC) $(TARGET_CFLAGS) -o $(PKG_BUILD_DIR)/helloworld.o -c $(PKG_BUILD_DIR)/helloworld.c
-	$(TARGET_CC) $(TARGET_LDFLAGS) -o $(PKG_BUILD_DIR)/$1 $(PKG_BUILD_DIR)/helloworld.o
-endef
+#define Build/Compile
+#	echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+#	$(MAKE) -C $(PKG_BUILD_DIR) \
+#		CC="$(TARGET_CC)" \
+#		CFLAGS="$(TARGET_CFLAGS)" \
+#		LDFLAGS="$(TARGET_LDFLAGS)"
+#	$(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
+#endef
 
 # Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
-#define Package/helloworld/install
-#	$(INSTALL_DIR) $(1)/usr/bin
-#	$(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/usr/bin
-#endef
+define Package/helloworld/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/usr/bin
+endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
 $(eval $(call BuildPackage,helloworld))
