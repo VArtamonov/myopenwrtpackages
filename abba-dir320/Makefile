@@ -7,7 +7,7 @@ include $(INCLUDE_DIR)/kernel.mk
 
 # Name, version and release number
 # The name and version of your package are used to define the variable to point to the build directory of your package: $(PKG_BUILD_DIR)
-PKG_NAME:=abba-dir320-test
+PKG_NAME:=abba-dir320
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
 PKG_LICENSE:=MIT
@@ -23,7 +23,7 @@ PKG_LICENSE:=MIT
 include $(INCLUDE_DIR)/package.mk
 
 # Package definition; instructs on how and where our package will appear in the overall configuration menu ('make menuconfig')
-define Package/abba-dir320-test
+define Package/abba-dir320
 #    SECTION:=kernel
 #    CATEGORY:=Kernel modules
 #    DEPENDS:=@(PACKAGE_kmod-abba-dir320-detect)
@@ -105,5 +105,5 @@ endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
 #$(eval $(call KernelPackage,abba-dir320-detect))
-$(eval $(call BuildPackage,abba-dir320-test))
+$(eval $(call BuildPackage,abba-dir320))
 
