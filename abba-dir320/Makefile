@@ -67,16 +67,16 @@ define Build/Prepare
 endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
-#define Build/Compile
-#	@echo '...'
-#	@echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-#	$(Build/Compile/Default)
+define Build/Compile/abba-dir320
+	echo '...'
+	echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+	$(Build/Compile/Default)
 #$(MAKE) -C $(PKG_BUILD_DIR) \
 # CC="$(TARGET_CC)" \
 # CFLAGS="$(TARGET_CFLAGS)" \
 # LDFLAGS="$(TARGET_LDFLAGS)"
 # $(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
-#endef
+endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
 #$(eval $(call KernelPackage,abba-dir320-detect))
