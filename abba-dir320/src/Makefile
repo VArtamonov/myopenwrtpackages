@@ -1,6 +1,6 @@
 
 # Global target; when 'make' is run without arguments, this is what it should do
-all: helloworld
+all: abba-dir320
 
 # These variables hold the name of the compilation tool, the compilation flags and the link flags
 # We make use of these variables in the package manifest
@@ -25,11 +25,11 @@ OBJ = $(patsubst %.c, %.o, $(SRC))
 # To build 'helloworld', we depend on the object files, and link them all into a single executable using the compilation tool
 # We use automatic variables to specify the final executable name 'helloworld', using '$@' and the '$^' will hold the names of all the
 # dependencies of this rule
-helloworld: $(OBJ)
+abba-dir320: $(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
 # To clean build artifacts, we specify a 'clean' rule, and use PHONY to indicate that this rule never matches with a potential file in the directory
 .PHONY: clean
 
 clean:
-	rm -f helloworld *.o
+	rm -f abba-dir320 *.o
