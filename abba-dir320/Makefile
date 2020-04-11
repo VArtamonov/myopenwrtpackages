@@ -50,7 +50,8 @@ define KernelPackage/abba-dir320-detect/description
 	This package contains the proprietary wireless driver for the D-LINK DIR-320A.
 endef
 
-MAKE_PATH := setup;driver
+# MAKE_PATH := setup;driver
+
 # Source settings (i.e. where to find the source codes)
 # This is a custom variable, used below
 #USE_SOURCE_DIR:=files
