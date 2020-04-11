@@ -3,7 +3,7 @@
 #
 
 include $(TOPDIR)/rules.mk
-#include $(INCLUDE_DIR)/kernel.mk
+include $(INCLUDE_DIR)/kernel.mk
 
 # Name, version and release number
 # The name and version of your package are used to define the variable to point to the build directory of your package: $(PKG_BUILD_DIR)
@@ -11,6 +11,9 @@ PKG_NAME:=abba-dir320
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
 PKG_LICENSE:=MIT
+
+PKG_USE_MIPS16:=0
+PKG_FLAGS:=nonshared
 
 #
 # PKG_BUILD_DIR=$(BUILD_DIR)/$(PKG_NAME)-$(BUILD_VARIANT)
@@ -37,9 +40,9 @@ define KernelPackage/abba-dir320-detect
   SECTION:=myopenwrtpackages
   DEPENDS:=@(TARGET_brcm47xx)
   TITLE:=Kernel driver for D-LINK DIR-320A
-  FILES:=$(PKG_BUILD_DIR)/driver/abba_dir320_test.o
+#  FILES:=$(PKG_BUILD_DIR)/driver/abba_dir320_test.o
   AUTOLOAD:=$(call AutoProbe,10,abba-dir320-detect)
-#endef
+endef
 
 # Package description; a more verbose description on what our package does
 define Package/abba-dir320/description
