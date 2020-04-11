@@ -41,19 +41,19 @@ endef
 # Package preparation instructions; create the build directory and copy the source code. 
 # The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
 define Build/Prepare
-	echo '...'
+	@echo '...'
 	@echo 'MAKE_PATH = $(MAKE_PATH)'
 	@echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	$(Build/Prepare/Default)
 endef
 
-#define Build/Configure
-#	echo 'Configure $(PKG_NAME) ...'
-#	true
-#endef
+define Build/Configure
+	@echo 'Configure $(PKG_NAME) ...'
+endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
 define Build/Compile
+	@echo '...'
 	@echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	$(TARGET_CC) $(TARGET_CFLAGS) -o $(PKG_BUILD_DIR)/helloworld.o -c $(PKG_BUILD_DIR)/helloworld.c
 	$(TARGET_CC) $(TARGET_LDFLAGS) -o $(PKG_BUILD_DIR)/$1 $(PKG_BUILD_DIR)/helloworld.o
