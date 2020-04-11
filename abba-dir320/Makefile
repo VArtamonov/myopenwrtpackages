@@ -3,6 +3,7 @@
 #
 
 include $(TOPDIR)/rules.mk
+include $(INCLUDE_DIR)/kernel.mk
 
 # Name, version and release number
 # The name and version of your package are used to define the variable to point to the build directory of your package: $(PKG_BUILD_DIR)
@@ -20,7 +21,6 @@ PKG_LICENSE:=MIT
 #
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/kernel.mk
 
 # Package definition; instructs on how and where our package will appear in the overall configuration menu ('make menuconfig')
 define Package/abba-dir320
@@ -28,8 +28,8 @@ define Package/abba-dir320
  SECTION:=myopenwrtpackages
  CATEGORY:=Extra packages
  TITLE:=Proprietary D-DLINK DIR-320 driver test
- DEPENDS:=@(PACKAGE_kmod-abba-dir320-detect)
- SUBMENUDEP:=(TARGET_brcm47xx)
+#DEPENDS:=@(PACKAGE_kmod-abba-dir320-detect)
+#SUBMENUDEP:=(TARGET_brcm47xx)
 endef
 
 define KernelPackage/abba-dir320-detect
