@@ -36,7 +36,7 @@ define KernelPackage/abba-dir320-detect
 	SECTION:=myopenwrtpackages
 	DEPENDS:=@(TARGET_brcm47xx||TARGET_brcm63xx) +wireless-tools
 	TITLE:=Kernel driver for D-LINK DIR-320A
-	FILES:=$(PKG_BUILD_DIR)/glue/wl_glue.ko
+	FILES:=$(PKG_BUILD_DIR)/driver/wl_glue.ko
 	AUTOLOAD:=$(call AutoProbe,abba-dir320-detect)
 endef
 
@@ -99,6 +99,6 @@ MAKE_KMOD := $(MAKE) -C "$(LINUX_DIR)" \
 #endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
-#$(eval $(call KernelPackage,abba-dir320-detect))
+$(eval $(call KernelPackage,abba-dir320-detect))
 $(eval $(call BuildPackage,abba-dir320))
 
