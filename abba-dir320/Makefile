@@ -49,7 +49,20 @@ define KernelPackage/abba-dir320-detect/description
 	This package contains the proprietary wireless driver for the D-LINK DIR-320A.
 endef
 
-MAKE_PATH := setup/;driver/
+# MAKE_PATH := setup/
+# Source settings (i.e. where to find the source codes)
+# This is a custom variable, used below
+#USE_SOURCE_DIR:=files
+
+# Package preparation instructions; create the build directory and copy the source code. 
+# The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
+define Build/Prepare
+	echo '...'
+	echo 'MAKE_PATH = $(MAKE_PATH)'
+	echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+	mkdir -p $(PKG_BUILD_DIR)
+#	$(CP) ./files/* $(PKG_BUILD_DIR)
+endef
 
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
