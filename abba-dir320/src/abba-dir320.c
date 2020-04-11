@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 //	if (argc < 2)
 //		usage(argv[0]);
 
-		fprintf(stderr, "ABBA: Test D-LINK DIR-320 !!!\n");
+	fprintf(stderr, "ABBA: Test D-LINK DIR-320 !!!\n");
 
 	return ret;
 }
