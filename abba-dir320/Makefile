@@ -61,7 +61,7 @@ define Build/Prepare
 	@echo 'MAKE_PATH = $(MAKE_PATH)'
 	@echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	@mkdir -p $(PKG_BUILD_DIR)
-	$(CP) ./files/* $(PKG_BUILD_DIR)
+	$(CP) ./* $(PKG_BUILD_DIR)
 endef
 
 
