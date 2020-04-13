@@ -26,17 +26,17 @@ include $(INCLUDE_DIR)/package.mk
 # Package definition; instructs on how and where our package will appear in the overall configuration menu ('make menuconfig')
 define Package/abba-dir320
   SUBMENU:=ABBA
-  SECTION:=myopenwrtpackages
-  CATEGORY:=Extra packages
+  SECTION:=kernel
+#  CATEGORY:=Extra packages
   TITLE:=Proprietary D-DLINK DIR-320 driver test
   DEPENDS:=PACKAGE_kmod-abba-dir320-detect
 endef
 
 define KernelPackage/abba-dir320-detect
   SUBMENU:=ABBA
-  SECTION:=myopenwrtpackages
+  SECTION:=kernel
   TITLE:=Kernel driver for D-LINK DIR-320A
-  DEPENDS:=TARGET_brcm47xx
+#  DEPENDS:=TARGET_brcm47xx
   FILES:=$(PKG_BUILD_DIR)/driver/abba-dir320-test.ko
   AUTOLOAD:=$(call AutoProbe,abba-dir320-detect)
 endef
@@ -103,6 +103,6 @@ define Package/abba-dir320/install
 endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
-#$(eval $(call KernelPackage,abba-dir320-detect))
+$(eval $(call KernelPackage,abba-dir320-detect))
 $(eval $(call BuildPackage,abba-dir320))
 
