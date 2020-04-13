@@ -3,8 +3,8 @@
 #
 
 include $(TOPDIR)/rules.mk
-include $(INCLUDE_DIR)/kernel-defaults.mk
 include $(INCLUDE_DIR)/kernel.mk
+include $(INCLUDE_DIR)/kernel-defaults.mk
 
 # Name, version and release number
 # The name and version of your package are used to define the variable to point to the build directory of your package: $(PKG_BUILD_DIR)
