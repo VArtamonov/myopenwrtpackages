@@ -74,12 +74,17 @@ endef
 define Build/Compile/abba-dir320
 	echo '...'
 	echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-	$(Build/Compile/Default)
+#	$(Build/Compile/Default)
 #	$(MAKE) -C $(PKG_BUILD_DIR) \
 #	    CC="$(TARGET_CC)" \
 #	    CFLAGS="$(TARGET_CFLAGS)" \
 #	    LDFLAGS="$(TARGET_LDFLAGS)"
 #	    $(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
+
+	$(TARGET_CC) $(TARGET_CFLAGS) -Wall \
+		-o $(PKG_BUILD_DIR)/setup $(PKG_BUILD_DIR)/setup/abba-dir320.c
+
+
 endef
 
 define Build/InstallDev
