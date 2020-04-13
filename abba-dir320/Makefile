@@ -42,7 +42,7 @@ define KernelPackage/abba-dir320-detect
   SECTION:=myopenwrtpackages
   DEPENDS:=@TARGET_brcm47xx
   TITLE:=Kernel driver for D-LINK DIR-320A
-#  FILES:=$(PKG_BUILD_DIR)/driver/abba-dir320-test.ko
+  FILES:=$(PKG_BUILD_DIR)/driver/abba-dir320-test.ko
   AUTOLOAD:=$(call AutoProbe,abba-dir320-detect)
 endef
 
