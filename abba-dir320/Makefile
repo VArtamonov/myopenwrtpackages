@@ -59,6 +59,11 @@ endef
 # This is a custom variable, used below
 #USE_SOURCE_DIR:=files
 
+MAKE_KMOD := $(MAKE) -C "$(LINUX_DIR)" \
+		$(KERNEL_MAKE_FLAGS) \
+		PATH="$(TARGET_PATH)" \
+		SUBDIRS="$(PKG_BUILD_DIR)/kmod" \
+
 # Package preparation instructions; create the build directory and copy the source code. 
 # The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
 define Build/Prepare
