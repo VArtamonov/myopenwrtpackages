@@ -72,8 +72,8 @@ endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
 define Build/Compile
-	echo '...'
-	echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+	@echo '...'
+	@echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 #	$(Build/Compile/Default)
 #	$(MAKE) -C $(PKG_BUILD_DIR) \
 #	    CC="$(TARGET_CC)" \
@@ -82,7 +82,7 @@ define Build/Compile
 #	    $(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
 
 	$(TARGET_CC) $(TARGET_CFLAGS) -Wall \
-		-o $(PKG_BUILD_DIR)/setup $(PKG_BUILD_DIR)/setup/abba-dir320.c
+		-o $(PKG_BUILD_DIR)/setup/abba-dir320 $(PKG_BUILD_DIR)/setup/abba-dir320.c
 
 endef
 
