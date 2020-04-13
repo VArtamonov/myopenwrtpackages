@@ -91,7 +91,7 @@ define Build/Compile
 	@echo 'Compile driver ...'
 	@echo 'KERNEL_MAKEOPTS= $(KERNEL_MAKEOPTS)'
 	$(MAKE) $(KERNEL_MAKEOPTS) \
-		SUBDIRS="$(PKG_BUILD_DIR)" modules
+		SUBDIRS="$(PKG_BUILD_DIR)/driver" modules
 
 endef
 
