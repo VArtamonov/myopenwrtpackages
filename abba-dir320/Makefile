@@ -37,13 +37,13 @@ define Package/abba-dir320
   SUBMENUDEP:=TARGET_brcm47xx
 endef
 
-define KernelPackage/driver/abba-dir320-detect
+define KernelPackage/abba-dir320-detect
 #  $(call Package/abba-dir320)
   SECTION:=myopenwrtpackages
   DEPENDS:=@(TARGET_brcm47xx)
   TITLE:=Kernel driver for D-LINK DIR-320A
-  FILES:=$(PKG_BUILD_DIR)/driver/abba-dir320-test.ko
-  AUTOLOAD:=$(call AutoProbe,abba-dir320-detect)
+#  FILES:=$(PKG_BUILD_DIR)/driver/abba-dir320-test.ko
+#  AUTOLOAD:=$(call AutoProbe,abba-dir320-detect)
 endef
 
 # Package description; a more verbose description on what our package does
@@ -51,7 +51,7 @@ define Package/abba-dir320/description
  This package contains the proprietary wireless driver for the D-LINK DIR-320A.
 endef
 
-define KernelPackage/driver/abba-dir320-detect/description
+define KernelPackage/abba-dir320-detect/description
  This package contains the proprietary wireless driver for the D-LINK DIR-320A.
 endef
 
