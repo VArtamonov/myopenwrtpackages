@@ -88,6 +88,7 @@ define Build/Compile
 		-o $(PKG_BUILD_DIR)/setup/abba-dir320 $(PKG_BUILD_DIR)/setup/abba-dir320.c
 
 	@echo 'Compile driver ...'
+	@echo 'DUMP = $(DUMP)'
 	@echo 'KERNEL_MAKE = $(KERNEL_MAKE)'
 endef
 
