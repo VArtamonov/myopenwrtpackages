@@ -3,6 +3,7 @@
 #
 
 include $(TOPDIR)/rules.mk
+include $(INCLUDE_DIR)/kernel-defaults.mk
 include $(INCLUDE_DIR)/kernel.mk
 
 # Name, version and release number
