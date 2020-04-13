@@ -33,7 +33,7 @@ define Package/abba-dir320
 endef
 
 define KernelPackage/abba-dir320-detect
-  $(call Package/broadcom-wl/Default)
+  SUBMENU:=ABBA
   SECTION:=kernel
   TITLE:=Kernel driver for D-LINK DIR-320A
   FILES:=$(PKG_BUILD_DIR)/driver/abba-dir320-test.ko
@@ -72,7 +72,7 @@ define Build/Prepare
 endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
-define Build/abba-dir320/Compile
+define Build/Compile
 #	$(Build/Compile/Default)
 	@echo '... Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	@echo 'Compilier abba-dir320 ...'
