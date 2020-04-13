@@ -83,10 +83,12 @@ define Build/Compile
 	@echo '... Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 
 	@echo 'Compilier abba-dir320 ...'
+	@echo 'TARGET_CFLAGS=$(TARGET_CFLAGS)'
 	$(TARGET_CC) $(TARGET_CFLAGS) -Wall \
 		-o $(PKG_BUILD_DIR)/setup/abba-dir320 $(PKG_BUILD_DIR)/setup/abba-dir320.c
 
 	@echo 'Compile driver ...'
+	@echo 'KERNEL_MAKE_FLAGS=$(KERNEL_MAKE_FLAGS)'
 	$(MAKE_KMOD) -C "$(LINUX_DIR)" \
 		SUBDIRS="$(PKG_BUILD_DIR)/driver" \
 		modules
