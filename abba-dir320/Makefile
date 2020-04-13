@@ -27,16 +27,15 @@ include $(INCLUDE_DIR)/package.mk
 define Package/abba-dir320
   SUBMENU:=ABBA
   SECTION:=kernel
-#  CATEGORY:=Extra packages
+  CATEGORY:=Kernel modules
   TITLE:=Proprietary D-DLINK DIR-320 driver test
   DEPENDS:=PACKAGE_kmod-abba-dir320-detect
 endef
 
 define KernelPackage/abba-dir320-detect
-  SUBMENU:=ABBA
+  $(call Package/broadcom-wl/Default)
   SECTION:=kernel
   TITLE:=Kernel driver for D-LINK DIR-320A
-#  DEPENDS:=TARGET_brcm47xx
   FILES:=$(PKG_BUILD_DIR)/driver/abba-dir320-test.ko
   AUTOLOAD:=$(call AutoProbe,abba-dir320-detect)
 endef
