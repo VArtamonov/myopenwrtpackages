@@ -51,7 +51,7 @@ define Package/abba-dir320/description
  This package contains the proprietary wireless driver for the D-LINK DIR-320A.
 endef
 
-define KernelPackage/abba-dir320-detect/description
+define KernelPackage/driver/abba-dir320-detect/description
  This package contains the proprietary wireless driver for the D-LINK DIR-320A.
 endef
 
