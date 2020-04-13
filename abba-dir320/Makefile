@@ -88,10 +88,7 @@ define Build/Compile
 		-o $(PKG_BUILD_DIR)/setup/abba-dir320 $(PKG_BUILD_DIR)/setup/abba-dir320.c
 
 	@echo 'Compile driver ...'
-	@echo 'KERNEL_MAKE_FLAGS=$(KERNEL_MAKE_FLAGS)'
-	$(MAKE_KMOD) -C "$(LINUX_DIR)" \
-		SUBDIRS="$(PKG_BUILD_DIR)/driver" \
-		modules
+	@echo 'KERNEL_MAKE = $(KERNEL_MAKE)'
 endef
 
 define Build/InstallDev
