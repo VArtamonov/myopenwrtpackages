@@ -75,14 +75,14 @@ define Build/Compile
 	@echo '...'
 	@echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 #	$(Build/Compile/Default)
-#	$(MAKE) -C $(PKG_BUILD_DIR) \
-#	    CC="$(TARGET_CC)" \
-#	    CFLAGS="$(TARGET_CFLAGS)" \
-#	    LDFLAGS="$(TARGET_LDFLAGS)"
-#	    $(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
 
 	$(TARGET_CC) $(TARGET_CFLAGS) -Wall \
 		-o $(PKG_BUILD_DIR)/setup/abba-dir320 $(PKG_BUILD_DIR)/setup/abba-dir320.c
+
+	# Compile driver
+	$(MAKE_KMOD) -C "$(LINUX_DIR)" \
+		SUBDIRS="$(PKG_BUILD_DIR)/driver" \
+		modules
 
 endef
 
@@ -95,7 +95,7 @@ endef
 # Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
 define Package/abba-dir320/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/abba-dir320 $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/setup/abba-dir320 $(1)/usr/bin
 endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
