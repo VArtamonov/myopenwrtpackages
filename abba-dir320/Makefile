@@ -86,10 +86,10 @@ define Build/Compile
 	$(TARGET_CC) $(TARGET_CFLAGS) -Wall \
 		-o $(PKG_BUILD_DIR)/setup/abba-dir320 $(PKG_BUILD_DIR)/setup/abba-dir320.c
 
-	# Compile driver
-#	$(MAKE_KMOD) -C "$(LINUX_DIR)" \
-#		SUBDIRS="$(PKG_BUILD_DIR)/driver" \
-#		modules
+	@echo 'Compile driver ...'
+	$(MAKE_KMOD) -C "$(LINUX_DIR)" \
+		SUBDIRS="$(PKG_BUILD_DIR)/driver" \
+		modules
 endef
 
 define Build/InstallDev
