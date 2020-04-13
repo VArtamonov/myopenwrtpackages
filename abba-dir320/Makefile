@@ -78,22 +78,19 @@ define Build/Prepare
 endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
-define Build/Compile
-	@echo '...'
-	@echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+#define Build/Compile
+#	@echo '... Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 #	$(Build/Compile/Default)
-
-	$(TARGET_CC) $(TARGET_CFLAGS) -Wall \
-		-o $(PKG_BUILD_DIR)/setup/abba-dir320 $(PKG_BUILD_DIR)/setup/abba-dir320.c
-
+#	$(TARGET_CC) $(TARGET_CFLAGS) -Wall \
+#		-o $(PKG_BUILD_DIR)/setup/abba-dir320 $(PKG_BUILD_DIR)/setup/abba-dir320.c
 #	# Compile driver
 #	$(MAKE_KMOD) -C "$(LINUX_DIR)" \
 #		SUBDIRS="$(PKG_BUILD_DIR)/driver" \
 #		modules
-
-endef
+#endef
 
 define Build/InstallDev
+	@echo '... Install ...'
 	$(INSTALL_DIR) $(1)/usr/lib
 #	$(CP) $(PKG_BUILD_DIR)/shared/libshared.a $(1)/usr/lib/
 endef
