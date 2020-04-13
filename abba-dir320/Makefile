@@ -15,6 +15,8 @@ PKG_LICENSE:=MIT
 PKG_USE_MIPS16:=0
 PKG_FLAGS:=nonshared
 
+PKG_EXTMOD_SUBDIRS:=driver
+
 #
 # PKG_BUILD_DIR=$(BUILD_DIR)/$(PKG_NAME)-$(BUILD_VARIANT)
 #
@@ -36,12 +38,12 @@ define Package/abba-dir320
 endef
 
 define KernelPackage/abba-dir320-detect
-  $(call Package/abba-dir320)
+#  $(call Package/abba-dir320)
   SECTION:=myopenwrtpackages
   DEPENDS:=@(TARGET_brcm47xx)
   TITLE:=Kernel driver for D-LINK DIR-320A
-  FILES:=$(PKG_BUILD_DIR)/driver/abba_dir320_test.ko
-  AUTOLOAD:=$(call AutoProbe,10,abba-dir320-detect)
+  FILES:=$(PKG_BUILD_DIR)/driver/abba-dir320-test.ko
+  AUTOLOAD:=$(call AutoProbe,abba-dir320-detect)
 endef
 
 # Package description; a more verbose description on what our package does
