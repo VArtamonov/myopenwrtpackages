@@ -39,11 +39,11 @@ endef
 
 define KernelPackage/abba-dir320-detect
 #  $(call Package/abba-dir320)
-#  SECTION:=myopenwrtpackages
-#  DEPENDS:=@(TARGET_brcm47xx)
-#  TITLE:=Kernel driver for D-LINK DIR-320A
-#  FILES:=$(PKG_BUILD_DIR)/driver/abba-dir320-test.ko
-#  AUTOLOAD:=$(call AutoProbe,abba-dir320-detect)
+  SECTION:=myopenwrtpackages
+  DEPENDS:=@(TARGET_brcm47xx)
+  TITLE:=Kernel driver for D-LINK DIR-320A
+  FILES:=$(PKG_BUILD_DIR)/driver/abba-dir320-test.ko
+  AUTOLOAD:=$(call AutoProbe,abba-dir320-detect)
 endef
 
 # Package description; a more verbose description on what our package does
@@ -86,10 +86,10 @@ define Build/Compile
 	$(TARGET_CC) $(TARGET_CFLAGS) -Wall \
 		-o $(PKG_BUILD_DIR)/setup/abba-dir320 $(PKG_BUILD_DIR)/setup/abba-dir320.c
 
-	# Compile driver
-	$(MAKE_KMOD) -C "$(LINUX_DIR)" \
-		SUBDIRS="$(PKG_BUILD_DIR)/driver" \
-		modules
+#	# Compile driver
+#	$(MAKE_KMOD) -C "$(LINUX_DIR)" \
+#		SUBDIRS="$(PKG_BUILD_DIR)/driver" \
+#		modules
 
 endef
 
