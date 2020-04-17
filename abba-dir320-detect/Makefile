@@ -36,6 +36,7 @@ define KernelPackage/abba-dir320-detect
   SUBMENU:=ABBA
   SECTION:=kernel
   TITLE:=Kernel driver for D-LINK DIR-320A
+  DEPENDS:= @GPIO_SUPPORT @TARGET_brcm47xx
   FILES:=$(PKG_BUILD_DIR)/abba-dir320-detect.ko
   AUTOLOAD:=$(call AutoProbe,abba-dir320-detect)
 endef
