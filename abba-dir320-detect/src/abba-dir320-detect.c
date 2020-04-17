@@ -94,8 +94,10 @@ static int __init bcm47xx_buttons_copy(const struct gpio_keys_button *buttons,
 
 int __init bcm47xx_buttons_register(void)
 {
-	enum bcm47xx_board board = bcm47xx_board_get();
+//	enum bcm47xx_board board = bcm47xx_board_get();
 	int err;
+
+
 	if (err)
 		return -ENOMEM;
 
@@ -110,7 +112,7 @@ int __init bcm47xx_buttons_register(void)
 
 void __init bcm47xx_leds_register(void)
 {
-	enum bcm47xx_board board = bcm47xx_board_get();
+//	enum bcm47xx_board board = bcm47xx_board_get();
 
 	bcm47xx_set_pdata(bcm47xx_leds_luxul_xwr_600_v1);
 
