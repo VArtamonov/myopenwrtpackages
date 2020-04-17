@@ -72,7 +72,7 @@ MAKE_KMOD := $(MAKE) -C "$(LINUX_DIR)" \
 #endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
-define Build/abba-dir320-detect/Compile
+define Build/Compile
 #	$(Build/Compile/Default)
 	@echo '... Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 #	@echo 'Compilier abba-dir320 ...'
