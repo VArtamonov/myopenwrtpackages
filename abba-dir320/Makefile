@@ -8,7 +8,7 @@ include $(INCLUDE_DIR)/kernel-defaults.mk
 
 # Name, version and release number
 # The name and version of your package are used to define the variable to point to the build directory of your package: $(PKG_BUILD_DIR)
-PKG_NAME:=abba-dir320-detect
+PKG_NAME:=abba-dir320
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
 PKG_LICENSE:=MIT
