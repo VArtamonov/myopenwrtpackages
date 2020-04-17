@@ -72,17 +72,17 @@ MAKE_KMOD := $(MAKE) -C "$(LINUX_DIR)" \
 #endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
-#define Build/Compile
+define Build/abba-dir320-detect/Compile
 #	$(Build/Compile/Default)
-#	@echo '... Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+	@echo '... Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 #	@echo 'Compilier abba-dir320 ...'
 #	$(TARGET_CC) $(TARGET_CFLAGS) -Wall \
 #		-o $(PKG_BUILD_DIR)/setup/abba-dir320 $(PKG_BUILD_DIR)/setup/abba-dir320.c
-#	@echo 'Compile driver ...'
-#	@echo 'KERNEL_MAKEOPTS= $(KERNEL_MAKEOPTS)'
-#	$(MAKE) $(KERNEL_MAKEOPTS) \
-#		SUBDIRS="$(PKG_BUILD_DIR)" modules
-#endef
+	@echo 'Compile driver ...'
+	@echo 'KERNEL_MAKEOPTS= $(KERNEL_MAKEOPTS)'
+	$(MAKE) $(KERNEL_MAKEOPTS) \
+		SUBDIRS="$(PKG_BUILD_DIR)" modules
+endef
 
 #define Build/InstallDev
 #	@echo '... Install ...'
