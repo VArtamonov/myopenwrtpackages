@@ -94,6 +94,7 @@ endef
 # Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
 define Package/Install
 	@echo 'Install $(1) ...'
+	$(Build/Install/Default)
 #	$(INSTALL_DIR) $(1)/usr/bin
 #	$(INSTALL_BIN) $(PKG_BUILD_DIR)/setup/abba-dir320 $(1)/usr/bin
 endef
