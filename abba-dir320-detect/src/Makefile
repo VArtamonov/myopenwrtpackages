@@ -9,7 +9,7 @@
 # 2 of the License, or (at your option) any later version.
 #
 
-obj-m := abba-dir320-test.o
+obj-m := abba-dir320-detect.o
 
 ifeq ($(MAKING_MODULES),1)
 -include $(TOPDIR)/Rules.make
