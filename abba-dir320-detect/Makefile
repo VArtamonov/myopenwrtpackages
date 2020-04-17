@@ -4,7 +4,7 @@
 
 include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
-include $(INCLUDE_DIR)/kernel-defaults.mk
+#include $(INCLUDE_DIR)/kernel-defaults.mk
 
 # Name, version and release number
 # The name and version of your package are used to define the variable to point to the build directory of your package: $(PKG_BUILD_DIR)
@@ -62,27 +62,27 @@ MAKE_KMOD := $(MAKE) -C "$(LINUX_DIR)" \
 
 # Package preparation instructions; create the build directory and copy the source code. 
 # The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
-define Build/Prepare
-	@echo '...'
-	@echo 'MAKE_PATH = $(MAKE_PATH)'
-	@echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-	$(Build/Prepare/Default)
+#define Build/Prepare
+#	@echo '...'
+#	@echo 'MAKE_PATH = $(MAKE_PATH)'
+#	@echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+#	$(Build/Prepare/Default)
 #	@mkdir -p $(PKG_BUILD_DIR)
 #	$(CP) ./* $(PKG_BUILD_DIR)
-endef
+#endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
-define Build/Compile
+#define Build/Compile
 #	$(Build/Compile/Default)
-	@echo '... Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+#	@echo '... Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 #	@echo 'Compilier abba-dir320 ...'
 #	$(TARGET_CC) $(TARGET_CFLAGS) -Wall \
 #		-o $(PKG_BUILD_DIR)/setup/abba-dir320 $(PKG_BUILD_DIR)/setup/abba-dir320.c
-	@echo 'Compile driver ...'
-	@echo 'KERNEL_MAKEOPTS= $(KERNEL_MAKEOPTS)'
-	$(MAKE) $(KERNEL_MAKEOPTS) \
-		SUBDIRS="$(PKG_BUILD_DIR)" modules
-endef
+#	@echo 'Compile driver ...'
+#	@echo 'KERNEL_MAKEOPTS= $(KERNEL_MAKEOPTS)'
+#	$(MAKE) $(KERNEL_MAKEOPTS) \
+#		SUBDIRS="$(PKG_BUILD_DIR)" modules
+#endef
 
 #define Build/InstallDev
 #	@echo '... Install ...'
