@@ -5,7 +5,11 @@
 #include <linux/kernel.h> /* Needed for KERN_INFO */
 
 #include <linux/leds.h>
+#include <linux/input.h>
+#include <linux/gpio_keys.h>
+#include <linux/interrupt.h>
 #include <bcm47xx_board.h>
+#include <bcm47xx.h>
 
 #define DRV_NAME	"abba-dire320-test"
 #define DRV_VERSION	"0.0.1"
