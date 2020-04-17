@@ -24,13 +24,13 @@ PKG_LICENSE:=MIT
 include $(INCLUDE_DIR)/package.mk
 
 # Package definition; instructs on how and where our package will appear in the overall configuration menu ('make menuconfig')
-#define Package/abba-dir320
-#  SUBMENU:=ABBA
-#  SECTION:=kernel
-#  CATEGORY:=Kernel modules
-#  TITLE:=Proprietary D-DLINK DIR-320 driver test
+define Package/abba-dir320
+  SUBMENU:=ABBA
+  SECTION:=kernel
+  CATEGORY:=Kernel modules
+  TITLE:=Proprietary D-DLINK DIR-320 driver test
 #  DEPENDS:=PACKAGE_kmod-abba-dir320-detect
-#endef
+endef
 
 define KernelPackage/abba-dir320-detect
   SUBMENU:=ABBA
@@ -40,10 +40,10 @@ define KernelPackage/abba-dir320-detect
   AUTOLOAD:=$(call AutoProbe,abba-dir320-detect)
 endef
 
-## Package description; a more verbose description on what our package does
-#define Package/abba-dir320/description
-# This package contains the proprietary wireless driver for the D-LINK DIR-320A.
-#endef
+# Package description; a more verbose description on what our package does
+define Package/abba-dir320/description
+ This package contains the proprietary wireless driver for the D-LINK DIR-320A.
+endef
 
 define KernelPackage/abba-dir320-detect/description
  This package contains the proprietary wireless driver for the D-LINK DIR-320A.
@@ -75,9 +75,9 @@ endef
 define Build/Compile
 #	$(Build/Compile/Default)
 	@echo '... Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-#	@echo 'Compilier abba-dir320 ...'
-#	$(TARGET_CC) $(TARGET_CFLAGS) -Wall \
-#		-o $(PKG_BUILD_DIR)/setup/abba-dir320 $(PKG_BUILD_DIR)/setup/abba-dir320.c
+	@echo 'Compilier abba-dir320 ...'
+	$(TARGET_CC) $(TARGET_CFLAGS) -Wall \
+		-o $(PKG_BUILD_DIR)/setup/abba-dir320 $(PKG_BUILD_DIR)/setup/abba-dir320.c
 	@echo 'Compile driver ...'
 	@echo 'KERNEL_MAKEOPTS= $(KERNEL_MAKEOPTS)'
 	$(MAKE) $(KERNEL_MAKEOPTS) \
@@ -100,5 +100,5 @@ endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
 $(eval $(call KernelPackage,abba-dir320-detect))
-#$(eval $(call BuildPackage,abba-dir320))
+$(eval $(call BuildPackage,abba-dir320))
 
