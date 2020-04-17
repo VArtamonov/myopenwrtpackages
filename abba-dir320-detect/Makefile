@@ -4,7 +4,7 @@
 
 include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
-#include $(INCLUDE_DIR)/kernel-defaults.mk
+include $(INCLUDE_DIR)/kernel-defaults.mk
 
 # Name, version and release number
 # The name and version of your package are used to define the variable to point to the build directory of your package: $(PKG_BUILD_DIR)
@@ -79,7 +79,7 @@ define Build/abba-dir320-detect/Compile
 #	$(TARGET_CC) $(TARGET_CFLAGS) -Wall \
 #		-o $(PKG_BUILD_DIR)/setup/abba-dir320 $(PKG_BUILD_DIR)/setup/abba-dir320.c
 	@echo 'Compile driver ...'
-	@echo 'KERNEL_MAKEOPTS= $(KERNEL_MAKEOPTS)'
+#	@echo 'KERNEL_MAKEOPTS= $(KERNEL_MAKEOPTS)'
 	$(MAKE) $(KERNEL_MAKEOPTS) \
 		SUBDIRS="$(PKG_BUILD_DIR)" modules
 endef
