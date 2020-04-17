@@ -47,6 +47,51 @@
 		.gpio		= _gpio,				\
 	}
 
+/**************************************************
+ * Init
+ **************************************************/
+
+static struct gpio_led_platform_data bcm47xx_leds_pdata;
+
+#define bcm47xx_set_pdata(dev_leds) do {				\
+	bcm47xx_leds_pdata.leds = dev_leds;				\
+	bcm47xx_leds_pdata.num_leds = ARRAY_SIZE(dev_leds);		\
+} while (0)
+
+static struct gpio_led_platform_data bcm47xx_leds_pdata_extra __initdata = {};
+#define bcm47xx_set_pdata_extra(dev_leds) do {				\
+	bcm47xx_leds_pdata_extra.leds = dev_leds;			\
+	bcm47xx_leds_pdata_extra.num_leds = ARRAY_SIZE(dev_leds);	\
+} while (0)
+
+static struct gpio_keys_platform_data bcm47xx_button_pdata;
+
+static struct platform_device bcm47xx_buttons_gpio_keys = {
+	.name = "gpio-keys",
+	.dev = {
+		.platform_data = &bcm47xx_button_pdata,
+	}
+};
+
+/* Copy data from __initconst */
+static int __init bcm47xx_buttons_copy(const struct gpio_keys_button *buttons,
+				       size_t nbuttons)
+{
+	size_t size = nbuttons * sizeof(*buttons);
+
+	bcm47xx_button_pdata.buttons = kmemdup(buttons, size, GFP_KERNEL);
+	if (!bcm47xx_button_pdata.buttons)
+		return -ENOMEM;
+	bcm47xx_button_pdata.nbuttons = nbuttons;
+
+	return 0;
+}
+
+#define bcm47xx_copy_bdata(dev_buttons)					\
+	bcm47xx_buttons_copy(dev_buttons, ARRAY_SIZE(dev_buttons));
+
+
+
 int __init bcm47xx_buttons_register(void)
 {
 	enum bcm47xx_board board = bcm47xx_board_get();
@@ -67,6 +112,8 @@ void __init bcm47xx_leds_register(void)
 {
 	enum bcm47xx_board board = bcm47xx_board_get();
 
+	bcm47xx_set_pdata(bcm47xx_leds_luxul_xwr_600_v1);
+
 	gpio_led_register_device(-1, &bcm47xx_leds_pdata);
 	if (bcm47xx_leds_pdata_extra.num_leds)
 		gpio_led_register_device(0, &bcm47xx_leds_pdata_extra);
@@ -75,7 +122,7 @@ void __init bcm47xx_leds_register(void)
 
 int init_module(void)
 {
-	printk(KERN_INFO "Hello world 1.\n");
+	printk(KERN_INFO "ABBA DIR-320 Detect ... \n");
 	bcm47xx_buttons_register();
 	bcm47xx_leds_register();
 
