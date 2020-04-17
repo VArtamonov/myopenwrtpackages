@@ -91,12 +91,29 @@ static int __init bcm47xx_buttons_copy(const struct gpio_keys_button *buttons,
 	bcm47xx_buttons_copy(dev_buttons, ARRAY_SIZE(dev_buttons));
 
 
+static const struct gpio_keys_button
+bcm47xx_buttons_di320_a2[] __initconst = {
+	BCM47XX_GPIO_KEY(2, KEY_WPS_BUTTON),
+	BCM47XX_GPIO_KEY(3, KEY_RESTART),
+};
+
+
+static const struct gpio_led
+bcm47xx_leds_asus_di320_a2[] __initconst = {
+	BCM47XX_GPIO_LED(0, "green", "wlan", 0, LEDS_GPIO_DEFSTATE_OFF),
+	BCM47XX_GPIO_LED(1, "green", "power", 1, LEDS_GPIO_DEFSTATE_ON),
+	BCM47XX_GPIO_LED(3, "red", "wps", 0, LEDS_GPIO_DEFSTATE_OFF),
+	BCM47XX_GPIO_LED(4, "blue", "wps", 0, LEDS_GPIO_DEFSTATE_OFF),
+	BCM47XX_GPIO_LED(5, "green", "usb", 0, LEDS_GPIO_DEFSTATE_OFF),
+//	BCM47XX_GPIO_LED(5, "green", "usb", 0, LEDS_GPIO_DEFSTATE_OFF),
+};
 
 int __init bcm47xx_buttons_register(void)
 {
 //	enum bcm47xx_board board = bcm47xx_board_get();
 	int err;
 
+	err = bcm47xx_copy_bdata(bcm47xx_buttons_di320_a2);
 
 	if (err)
 		return -ENOMEM;
@@ -114,7 +131,7 @@ void __init bcm47xx_leds_register(void)
 {
 //	enum bcm47xx_board board = bcm47xx_board_get();
 
-	bcm47xx_set_pdata(bcm47xx_leds_luxul_xwr_600_v1);
+	bcm47xx_set_pdata(bcm47xx_leds_asus_di320_a2);
 
 	gpio_led_register_device(-1, &bcm47xx_leds_pdata);
 	if (bcm47xx_leds_pdata_extra.num_leds)
