@@ -47,6 +47,22 @@
 		.gpio		= _gpio,				\
 	}
 
+int __init bcm47xx_buttons_register(void)
+{
+	enum bcm47xx_board board = bcm47xx_board_get();
+	int err;
+	if (err)
+		return -ENOMEM;
+
+	err = platform_device_register(&bcm47xx_buttons_gpio_keys);
+	if (err) {
+		pr_err("Failed to register platform device: %d\n", err);
+		return err;
+	}
+
+	return 0;
+}
+
 void __init bcm47xx_leds_register(void)
 {
 	enum bcm47xx_board board = bcm47xx_board_get();
