@@ -9,7 +9,7 @@
 # 2 of the License, or (at your option) any later version.
 #
 
-obj-m += abba-dir320-detect.o
-obj-y += my-leds-gpio-register.o
+abba-dir320-detect-objs := my-leds-gpio-register.o
+obj-m := abba-dir320-detect.o
 
 
