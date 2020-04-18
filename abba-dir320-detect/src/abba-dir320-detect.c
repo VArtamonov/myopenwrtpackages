@@ -172,7 +172,7 @@ int __init abba_dir320_init(void)
 
 device_initcall(abba_dir320_init);
 
-MODULE_LICENSE("GPL v2");
+MODULE_LICENSE("GPL");
 MODULE_AUTHOR("ABBA 2020");
 MODULE_DESCRIPTION(DRV_DESC);
 MODULE_VERSION(DRV_VERSION);
