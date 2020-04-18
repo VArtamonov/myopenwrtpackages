@@ -2,14 +2,18 @@
 * hello−1.c − The simplest kernel module.
 */
 #include <linux/module.h> /* Needed by all modules */
-#include <linux/kernel.h> /* Needed for KERN_INFO */
+#include <linux/version.h>
+#include <linux/kmod.h>
 
-#include <linux/leds.h>
-#include <linux/input.h>
-#include <linux/gpio_keys.h>
-#include <linux/interrupt.h>
-#include <bcm47xx_board.h>
-#include <bcm47xx.h>
+// #include <linux/kernel.h> /* Needed for KERN_INFO */
+
+//#include <linux/leds.h>
+//#include <linux/input.h>
+//#include <linux/gpio_keys.h>
+
+//#include <linux/interrupt.h>
+//#include <bcm47xx_board.h>
+//#include <bcm47xx.h>
 
 #define DRV_NAME	"abba-dire320-test"
 #define DRV_VERSION	"0.0.1"
@@ -147,9 +151,11 @@ void __init bcm47xx_leds_register(void)
 }
 
 
-int init_module(void)
+int __init abba_dir320_init(void)
 {
 	printk(KERN_INFO "ABBA DIR-320 Detect ... \n");
+	printk(KERN_INFO DRV_DESC " version " DRV_VERSION "\n");
+
 	bcm47xx_buttons_register();
 	bcm47xx_leds_register();
 
@@ -159,10 +165,12 @@ int init_module(void)
 	return 0;
 }
 
-void cleanup_module(void)
-{
-printk(KERN_INFO "Goodbye world 1.\n");
-}
+//void cleanup_module(void)
+//{
+//	printk(KERN_INFO "Goodbye world 1.\n");
+//}
+
+device_initcall(abba_dir320_init);
 
 MODULE_LICENSE("GPL v2");
 MODULE_AUTHOR("ABBA 2020");
