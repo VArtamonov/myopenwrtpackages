@@ -161,15 +161,13 @@ static int __init abba_dir320_custom_init(void)
 	return 0;
 }
 
-
-module_init(abba_dir320_custom_init);
-
 static void __exit abba_dir320__custom_exit(void)
 {
 	printk(KERN_INFO "ABBA DIR-320 Detect ... \n");
 	printk(KERN_INFO DRV_DESC " version " DRV_VERSION "\n");
 }
 
+module_init(abba_dir320_custom_init);
 module_exit(abba_dir320__custom_exit);
 
 MODULE_LICENSE("GPL");
