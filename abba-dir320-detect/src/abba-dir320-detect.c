@@ -150,8 +150,7 @@ void __init bcm47xx_leds_register(void)
 		my_gpio_led_register_device(0, &bcm47xx_leds_pdata_extra);
 }
 
-
-int __init abba_dir320_init(void)
+static int __init abba_dir320_custom_init(void)
 {
 	printk(KERN_INFO "ABBA DIR-320 Detect ... \n");
 	printk(KERN_INFO DRV_DESC " version " DRV_VERSION "\n");
@@ -165,12 +164,16 @@ int __init abba_dir320_init(void)
 	return 0;
 }
 
-//void cleanup_module(void)
-//{
-//	printk(KERN_INFO "Goodbye world 1.\n");
-//}
 
-device_initcall(abba_dir320_init);
+module_init(abba_dir320_custom_init);
+
+static void __exit abba_dir320__custom_exit(void)
+{
+	printk(KERN_INFO "ABBA DIR-320 Detect ... \n");
+	printk(KERN_INFO DRV_DESC " version " DRV_VERSION "\n");
+}
+
+module_exit(abba_dir320__custom_exit);
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("ABBA 2020");
