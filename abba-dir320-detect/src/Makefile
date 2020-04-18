@@ -10,9 +10,6 @@
 #
 
 obj-m := abba-dir320-detect.o
-abba_dir320_detect-objs := my-leds-gpio-register.o
+obj-y := my-leds-gpio-register.o
 
-ifeq ($(MAKING_MODULES),1)
--include $(TOPDIR)/Rules.make
-endif
 
