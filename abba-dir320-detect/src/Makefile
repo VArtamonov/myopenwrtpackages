@@ -12,4 +12,3 @@
 abba-dir320-detect-objs := my-leds-gpio-register.o
 obj-m := abba-dir320-detect.o
 
-
