@@ -143,7 +143,7 @@ void __init bcm47xx_leds_register(void)
 
 	my_gpio_led_register_device(-1, &bcm47xx_leds_pdata);
 	if (bcm47xx_leds_pdata_extra.num_leds)
-		gpio_led_register_device(0, &bcm47xx_leds_pdata_extra);
+		my_gpio_led_register_device(0, &bcm47xx_leds_pdata_extra);
 }
 
 
