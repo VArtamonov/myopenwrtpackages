@@ -8,7 +8,7 @@
  */
 #include <linux/err.h>
 #include <linux/leds.h>
-//#include <linux/platform_device.h>
+#include <linux/platform_device.h>
 //#include <linux/slab.h>
 
 /**
