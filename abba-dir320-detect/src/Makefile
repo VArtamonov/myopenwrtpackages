@@ -1,7 +1,7 @@
 #
-# Makefile for wl_glue driver
+# Makefile
 #
-# Copyright (C) 2011 Jo-Philipp Wich <jo@mein.io>
+# Copyright
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -9,7 +9,7 @@
 # 2 of the License, or (at your option) any later version.
 #
 
-obj-m := abba-dir320-detect.o
-obj-y := my-leds-gpio-register.o
+obj-m += abba-dir320-detect.o
+obj-y += my-leds-gpio-register.o
 
 
