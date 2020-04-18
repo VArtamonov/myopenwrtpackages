@@ -9,8 +9,7 @@
 # 2 of the License, or (at your option) any later version.
 #
 
-obj-m += abba-dir320-detect.o
-abba-objs = my-leds-gpio-register.o
+obj-m += abba-dir320-detect.o my-leds-gpio-register.o
 
 ifeq ($(MAKING_MODULES),1)
 -include $(TOPDIR)/Rules.make
