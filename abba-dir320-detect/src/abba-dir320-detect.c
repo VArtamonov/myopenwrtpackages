@@ -1,13 +1,15 @@
 /*
 * hello−1.c − The simplest kernel module.
 */
+#include <linux/init.h>
 #include <linux/module.h> /* Needed by all modules */
-#include <linux/version.h>
-#include <linux/kmod.h> /* Needed for KERN_INFO */
+#include <linux/kernel.h>
+// #include <linux/version.h>
+// #include <linux/kmod.h> /* Needed for KERN_INFO */
 
-#include <linux/leds.h>
-#include <linux/input.h>
-#include <linux/gpio_keys.h>
+//#include <linux/leds.h>
+//#include <linux/input.h>
+//#include <linux/gpio_keys.h>
 
 //#include <linux/interrupt.h>
 #include <bcm47xx_board.h>
