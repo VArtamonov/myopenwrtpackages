@@ -82,7 +82,7 @@ define Build/Compile
 #	$(TARGET_CC) $(TARGET_CFLAGS) -Wall \
 #		-o $(PKG_BUILD_DIR)/setup/abba-dir320 $(PKG_BUILD_DIR)/setup/abba-dir320.c
 	@echo 'Compile driver ...'
-#	@echo 'KERNEL_MAKEOPTS= $(KERNEL_MAKEOPTS)'
+	@echo 'KERNEL_MAKEOPTS= $(KERNEL_MAKEOPTS)'
 	$(MAKE) $(KERNEL_MAKEOPTS) \
 		SUBDIRS="$(PKG_BUILD_DIR)" modules
 endef

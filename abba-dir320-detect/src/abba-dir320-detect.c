@@ -2,8 +2,6 @@
 * hello−1.c − The simplest kernel module.
 */
 #include <linux/module.h> /* Needed by all modules */
-#include <linux/version.h>
-#include <linux/kmod.h>
 
 // #include <linux/kernel.h> /* Needed for KERN_INFO */
 
@@ -18,7 +16,6 @@
 #define DRV_NAME	"abba-dire320-test"
 #define DRV_VERSION	"0.0.1"
 #define DRV_DESC	"ABBA DIR-320 driver"
-
 
 struct platform_device *my_gpio_led_register_device(int id, const struct gpio_led_platform_data *pdata);
 
