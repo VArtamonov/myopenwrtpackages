@@ -15,6 +15,10 @@
 #define DRV_VERSION	"0.0.1"
 #define DRV_DESC	"ABBA DIR-320 driver"
 
+
+struct platform_device *__init my_gpio_led_register_device(int id, const struct gpio_led_platform_data *pdata);
+
+
 /**************************************************
  * Database
  **************************************************/
@@ -137,7 +141,7 @@ void __init bcm47xx_leds_register(void)
 
 	bcm47xx_set_pdata(bcm47xx_leds_asus_di320_a2);
 
-	gpio_led_register_device(-1, &bcm47xx_leds_pdata);
+	my_gpio_led_register_device(-1, &bcm47xx_leds_pdata);
 	if (bcm47xx_leds_pdata_extra.num_leds)
 		gpio_led_register_device(0, &bcm47xx_leds_pdata_extra);
 }
