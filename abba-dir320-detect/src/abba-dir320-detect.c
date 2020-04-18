@@ -1,9 +1,9 @@
 /*
 * hello−1.c − The simplest kernel module.
 */
-#include <linux/init.h>
+// #include <linux/init.h>
 #include <linux/module.h> /* Needed by all modules */
-#include <linux/kernel.h>
+// #include <linux/kernel.h>
 // #include <linux/version.h>
 // #include <linux/kmod.h> /* Needed for KERN_INFO */
 
@@ -12,12 +12,12 @@
 //#include <linux/gpio_keys.h>
 
 //#include <linux/interrupt.h>
-#include <bcm47xx_board.h>
-#include <bcm47xx.h>
+//#include <bcm47xx_board.h>
+//#include <bcm47xx.h>
 
-#define DRV_NAME	"abba-dire320-test"
-#define DRV_VERSION	"0.0.1"
-#define DRV_DESC	"ABBA DIR-320 driver"
+//#define DRV_NAME	"abba-dire320-detect"
+//#define DRV_VERSION	"0.0.1"
+//#define DRV_DESC	"ABBA DIR-320 driver"
 
 struct platform_device *my_gpio_led_register_device(int id, const struct gpio_led_platform_data *pdata);
 
@@ -169,10 +169,11 @@ static void __exit abba_dir320__custom_exit(void)
 	printk(KERN_INFO DRV_DESC " version " DRV_VERSION "\n");
 }
 
-module_init(abba_dir320_custom_init);
-module_exit(abba_dir320__custom_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("ABBA 2020");
-MODULE_DESCRIPTION(DRV_DESC);
-MODULE_VERSION(DRV_VERSION);
+//MODULE_AUTHOR("ABBA 2020");
+//MODULE_DESCRIPTION(DRV_DESC);
+//MODULE_VERSION(DRV_VERSION);
+
+module_init(abba_dir320_custom_init);
+module_exit(abba_dir320__custom_exit);
