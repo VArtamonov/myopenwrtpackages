@@ -16,7 +16,7 @@
 #define DRV_DESC	"ABBA DIR-320 driver"
 
 
-struct platform_device *__init my_gpio_led_register_device(int id, const struct gpio_led_platform_data *pdata);
+struct platform_device *my_gpio_led_register_device(int id, const struct gpio_led_platform_data *pdata);
 
 
 /**************************************************
