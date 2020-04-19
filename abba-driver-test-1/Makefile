@@ -34,15 +34,16 @@ endef
 define Build/Configure
 	@echo ...
 	echo 'Configure $(PKG_NAME) ...'
-	@echo 'LINUX_DIR = $(LINUX_DIR)'
-	@echo 'KERNEL_MAKEOPTS = $(KERNEL_MAKEOPTS)'
+#	@echo 'LINUX_DIR = $(LINUX_DIR)'
+#	@echo 'KERNEL_MAKEOPTS = $(KERNEL_MAKEOPTS)'
 	@echo ...
 endef
 
 define Build/Compile
 	@echo ...
 	@echo '... Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-#	@echo 'LINUX_DIR = $(LINUX_DIR)'
+	@echo 'LINUX_DIR = $(LINUX_DIR)'
+	@echo 'KERNEL_MAKEOPTS = $(KERNEL_MAKEOPTS)'
 	@$(MAKE) $(KERNEL_MAKEOPTS) \
 		SUBDIRS="$(PKG_BUILD_DIR)" \
 		modules
