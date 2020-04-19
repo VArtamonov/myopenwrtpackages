@@ -17,13 +17,10 @@ PKG_BUILD_DIR:=$(KERNEL_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
 
-define KernelPackage/madwifi
+define KernelPackage/abba-driver-test-1
   SUBMENU:=ABBA
   TITLE:=Driver for ABBA
-  DESCRIPTION:=\
-    This package contains a driver for ABBA test driver.
-  URL:=http://madwifi.org/
-  VERSION:=$(LINUX_VERSION)+$(PKG_VERSION)-$(BOARD)-$(PKG_RELEASE)
+  DESCRIPTION:=This package contains a driver for ABBA test driver.
 #  AUTOLOAD:=$(call AutoLoad,50,abba-driver-test-1)
 endef
 
