@@ -117,7 +117,7 @@ bcm47xx_leds_asus_di320_a2[] __initconst = {
 //	BCM47XX_GPIO_LED(5, "green", "usb", 0, LEDS_GPIO_DEFSTATE_OFF),
 };
 
-int bcm47xx_buttons_register(void)
+int my_buttons_register(void)
 {
 //	enum bcm47xx_board board = bcm47xx_board_get();
 	int err;
@@ -136,7 +136,7 @@ int bcm47xx_buttons_register(void)
 	return 0;
 }
 
-void bcm47xx_leds_register(void)
+void my_leds_register(void)
 {
 //	enum bcm47xx_board board = bcm47xx_board_get();
 

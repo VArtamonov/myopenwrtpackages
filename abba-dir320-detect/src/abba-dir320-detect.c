@@ -13,13 +13,15 @@
 #define DRV_VERSION	"0.0.1"
 #define DRV_DESC	"ABBA DIR-320 driver"
 
+void my_leds_register(void);
+
 static int __init abba_dir320_custom_init(void)
 {
 	printk(KERN_INFO "ABBA DIR-320 Detect ... \n");
 	printk(KERN_INFO DRV_DESC " version " DRV_VERSION "\n");
 
-//	bcm47xx_buttons_register();
-//	bcm47xx_leds_register();
+//	my_buttons_register();
+	my_leds_register();
 
     /*
     * A non 0 return means init_module failed; module can't be loaded.
