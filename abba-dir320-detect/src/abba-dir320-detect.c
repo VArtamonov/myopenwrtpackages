@@ -1,19 +1,29 @@
 /*
-* hello−1.c − The simplest kernel module.
-*/
-// #include <linux/init.h>
-#include <linux/module.h> /* Needed by all modules */
-// #include <linux/kernel.h>
-// #include <linux/version.h>
-// #include <linux/kmod.h> /* Needed for KERN_INFO */
+ *  ABBA test driver
+ *
+ *  Copyright (C) 2020 VArtamonov <vartamonov@abba.org>
+ *
+ *  Based on the diag.c - GPIO interface driver for Broadcom boards
+ *    Copyright (C) 2006 Mike Baker <mbm@openwrt.org>,
+ *    Copyright (C) 2006-2007 Felix Fietkau <nbd@nbd.name>
+ *    Copyright (C) 2008 Andy Boyett <agb@openwrt.org>
+ *
+ *  This program is free software; you can redistribute it and/or modify it
+ *  under the terms of the GNU General Public License version 2 as published
+ *  by the Free Software Foundation.
+ */
 
-//#include <linux/leds.h>
-//#include <linux/input.h>
-//#include <linux/gpio_keys.h>
+#include <linux/module.h>
+#include <linux/version.h>
+#include <linux/kmod.h>
+
+#include <linux/leds.h>
+#include <linux/input.h>
+#include <linux/gpio_keys.h>
 
 //#include <linux/interrupt.h>
-//#include <bcm47xx_board.h>
-//#include <bcm47xx.h>
+#include <bcm47xx_board.h>
+#include <bcm47xx.h>
 
 //#define DRV_NAME	"abba-dire320-detect"
 //#define DRV_VERSION	"0.0.1"

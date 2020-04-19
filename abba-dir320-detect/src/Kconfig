@@ -1,0 +1,2 @@
+config ABBA_DIR320_DETECT
+	tristate "ABBA DIR-320 detect driver"
