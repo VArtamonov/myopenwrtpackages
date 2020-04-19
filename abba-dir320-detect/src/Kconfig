@@ -1,8 +1,0 @@
-menuconfig ABBA_DIR320
-	bool "DIR-320 support"
-	help
-	  Say Y to enable Linux DIR-320 support.
-
-config ABBA_DIR320_DETECT
-	tristate "ABBA DIR-320 detect driver"
-	depends on ABBA_DIR320
