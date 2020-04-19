@@ -71,7 +71,7 @@ static struct gpio_led_platform_data bcm47xx_leds_pdata;
 	bcm47xx_leds_pdata.num_leds = ARRAY_SIZE(dev_leds);		\
 } while (0)
 
-//static struct gpio_led_platform_data bcm47xx_leds_pdata_extra __initdata = {};
+static struct gpio_led_platform_data bcm47xx_leds_pdata_extra __initdata = {};
 #define bcm47xx_set_pdata_extra(dev_leds) do {				\
 	bcm47xx_leds_pdata_extra.leds = dev_leds;			\
 	bcm47xx_leds_pdata_extra.num_leds = ARRAY_SIZE(dev_leds);	\
