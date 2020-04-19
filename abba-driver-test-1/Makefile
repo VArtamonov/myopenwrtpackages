@@ -40,6 +40,7 @@ define Build/Compile
 	@echo 'LINUX_DIR = $(LINUX_DIR)'
 	$(MAKE) -C "$(LINUX_DIR)" \
 		$(MAKE_OPTS) \
+		V=1 \
 		SUBDIRS="$(PKG_BUILD_DIR)" \
 		modules
 endef
