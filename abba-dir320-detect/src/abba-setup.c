@@ -9,17 +9,13 @@
 #include <linux/version.h>
 #include <linux/kmod.h>
 
-//#include <linux/leds.h>
-//#include <linux/input.h>
-//#include <linux/gpio_keys.h>
+#include <linux/leds.h>
+#include <linux/input.h>
+#include <linux/gpio_keys.h>
 
-//#include <linux/interrupt.h>
-//#include <bcm47xx_board.h>
-//#include <bcm47xx.h>
-
-//#define DRV_NAME	"abba-dire320-detect"
-//#define DRV_VERSION	"0.0.1"
-//#define DRV_DESC	"ABBA DIR-320 driver"
+#include <linux/interrupt.h>
+#include <bcm47xx_board.h>
+#include <bcm47xx.h>
 
 struct platform_device *my_gpio_led_register_device(int id, const struct gpio_led_platform_data *pdata);
 
@@ -87,7 +83,7 @@ static struct platform_device bcm47xx_buttons_gpio_keys = {
 };
 
 /* Copy data from __initconst */
-static int __init bcm47xx_buttons_copy(const struct gpio_keys_button *buttons,
+static int bcm47xx_buttons_copy(const struct gpio_keys_button *buttons,
 				       size_t nbuttons)
 {
 	size_t size = nbuttons * sizeof(*buttons);
@@ -121,7 +117,7 @@ bcm47xx_leds_asus_di320_a2[] __initconst = {
 //	BCM47XX_GPIO_LED(5, "green", "usb", 0, LEDS_GPIO_DEFSTATE_OFF),
 };
 
-int __init bcm47xx_buttons_register(void)
+int bcm47xx_buttons_register(void)
 {
 //	enum bcm47xx_board board = bcm47xx_board_get();
 	int err;
@@ -140,7 +136,7 @@ int __init bcm47xx_buttons_register(void)
 	return 0;
 }
 
-void __init bcm47xx_leds_register(void)
+void bcm47xx_leds_register(void)
 {
 //	enum bcm47xx_board board = bcm47xx_board_get();
 
