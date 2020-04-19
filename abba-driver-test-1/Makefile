@@ -22,8 +22,8 @@ define KernelPackage/abba-driver-test-1
   SECTION:=kernel
   TITLE:=Driver for ABBA
   DEPENDS:= @GPIO_SUPPORT @TARGET_brcm47xx
-  FILES:=$(PKG_BUILD_DIR)/abba-dir320-test-1.ko
-  AUTOLOAD:=$(call AutoLoad,30,abba-dir320-test-1,1)
+  FILES:=$(PKG_BUILD_DIR)/abba-driver-test-1.ko
+  AUTOLOAD:=$(call AutoLoad,30,abba-driver-test-1,1)
 endef
 
 define KernelPackage/abba-driver-test-1/description
