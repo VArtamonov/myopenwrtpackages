@@ -44,8 +44,8 @@ define Build/Prepare
 	@echo '...'
 	@echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	$(Build/Prepare/Default)
-	mkdir -p $(PKG_BUILD_DIR)
-	$(CP) ./src/* $(PKG_BUILD_DIR)
+#	mkdir -p $(PKG_BUILD_DIR)
+#	$(CP) ./src/* $(PKG_BUILD_DIR)
 endef
 
 define Build/Configure
@@ -64,10 +64,11 @@ define Build/Compile
 endef
 
 # Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
-#define Package/helloworld/install
+define Package/Install
+	echo 'Install $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 #	$(INSTALL_DIR) $(1)/usr/bin
 #	$(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/usr/bin
-#endef
+endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
 $(eval $(call BuildPackage,helloworld))
