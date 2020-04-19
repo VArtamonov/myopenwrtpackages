@@ -1,2 +1,8 @@
+config ABBA_DIR320
+	bool "DIR-320 Support"
+	help
+	  Say Y to enable Linux DIT-320 support.
+
 config ABBA_DIR320_DETECT
 	tristate "ABBA DIR-320 detect driver"
+	depends on ABBA_DIR320
