@@ -10,7 +10,7 @@ include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
 
 PKG_NAME:=abba-driver-test-1
-PKG_VERSION:=0.0.1
+PKG_VERSION:=0
 PKG_RELEASE:=1
 
 PKG_BUILD_DIR:=$(KERNEL_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
