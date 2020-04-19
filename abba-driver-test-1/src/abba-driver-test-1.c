@@ -17,9 +17,9 @@
 #include <linux/version.h>
 #include <linux/kmod.h>
 
-#define DRV_NAME	"abba-driver-test-1"
-#define DRV_DESC	"ABBA - test driver"
-#define DRV_VERSION	"0.1"
+//#define DRV_NAME	"abba-driver-test-1"
+//#define DRV_DESC	"ABBA - test driver"
+//#define DRV_VERSION	"0.1"
 
 static int __init abba_example_init(void)
 {
@@ -39,7 +39,7 @@ static void __exit abba_example_exit(void)
 module_init(abba_example_init);
 module_exit(abba_example_exit);
 
-MODULE_LICENSE("GPL");
-MODULE_AUTHOR("VArtamonov");
-MODULE_DESCRIPTION(DRV_DESC);
-MODULE_VERSION(DRV_VERSION);
+MODULE_LICENSE("MIT");
+//MODULE_AUTHOR("VArtamonov");
+//MODULE_DESCRIPTION(DRV_DESC);
+//MODULE_VERSION(DRV_VERSION);

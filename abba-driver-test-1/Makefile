@@ -1,7 +1,6 @@
 #
-# Copyright (C) 2006 OpenWrt.org
+# Copyright (C) 2020 ABBA
 #
-# This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
 #
 # $Id$
@@ -10,8 +9,9 @@ include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
 
 PKG_NAME:=abba-driver-test-1
-PKG_VERSION:=0
+PKG_VERSION:=1.0
 PKG_RELEASE:=1
+PKG_LICENSE:=MIT
 
 #PKG_BUILD_DIR:=$(KERNEL_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
@@ -59,3 +59,4 @@ define Build/Compile
 endef
 
 $(eval $(call KernelPackage,abba-driver-test-1))
++
