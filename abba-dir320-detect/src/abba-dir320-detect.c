@@ -13,8 +13,6 @@
 #define DRV_VERSION	"0.0.1"
 #define DRV_DESC	"ABBA DIR-320 driver"
 
-struct platform_device *my_gpio_led_register_device(int id, const struct gpio_led_platform_data *pdata);
-
 static int __init abba_dir320_custom_init(void)
 {
 	printk(KERN_INFO "ABBA DIR-320 Detect ... \n");
