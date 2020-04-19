@@ -53,19 +53,15 @@ define KernelPackage/abba-dir320-detect/description
  This package contains the proprietary wireless driver for the D-LINK DIR-320A.
 endef
 
-EXTRA_KCONFIG:= \
-	CONFIG_ABBA_DIR320_DETECT=m
-
-EXTRA_CFLAGS:= \
-	$(patsubst CONFIG_%, -DCONFIG_%=1, $(patsubst %=m,%,$(filter %=m,$(EXTRA_KCONFIG)))) \
-	$(patsubst CONFIG_%, -DCONFIG_%=1, $(patsubst %=y,%,$(filter %=y,$(EXTRA_KCONFIG)))) \
+#EXTRA_CFLAGS:= \
+#	$(patsubst CONFIG_%, -DCONFIG_%=1, $(patsubst %=m,%,$(filter %=m,$(EXTRA_KCONFIG)))) \
+#	$(patsubst CONFIG_%, -DCONFIG_%=1, $(patsubst %=y,%,$(filter %=y,$(EXTRA_KCONFIG)))) \
+#	EXTRA_CFLAGS="$(EXTRA_CFLAGS)" \
 
 MAKE_OPTS:= \
 	ARCH="$(LINUX_KARCH)" \
 	CROSS_COMPILE="$(TARGET_CROSS)" \
-	SUBDIRS="$(PKG_BUILD_DIR)" \
-	EXTRA_CFLAGS="$(EXTRA_CFLAGS)" \
-	$(EXTRA_KCONFIG)
+	SUBDIRS="$(PKG_BUILD_DIR)"
 
 define Build/Compile
 	$(MAKE) \
