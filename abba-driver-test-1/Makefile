@@ -53,7 +53,9 @@ MAKE_OPTS:= \
 	$(EXTRA_KCONFIG)
 
 define Build/Compile
-	$(MAKE) -C "$(LINUX_DIR)" \
+	$(MAKE) \
+		$(if $(findstring c,$(OPENWRT_VERBOSE)),V=1,V='') \
+		-C "$(LINUX_DIR)" \
 		$(MAKE_OPTS) \
 		modules
 endef
