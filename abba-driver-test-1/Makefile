@@ -47,7 +47,7 @@ define Build/Compile
 	@echo ...
 	@echo '... Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	@echo 'LINUX_DIR = $(LINUX_DIR)'
-	$(MAKE) -C "$(LINUX_DIR)" \
+	$(MAKE) V=1 -C "$(LINUX_DIR)" \
 		$(MAKE_OPTS) \
 		modules
 endef
