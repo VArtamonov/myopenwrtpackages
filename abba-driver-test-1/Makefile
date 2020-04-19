@@ -8,7 +8,6 @@
 
 include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
-include $(INCLUDE_DIR)/kernel-defaults.mk
 
 PKG_NAME:=abba-driver-test-1
 PKG_VERSION:=0
@@ -39,14 +38,19 @@ define Build/Configure
 	@echo ...
 endef
 
+MAKE_OPTS:= \
+	ARCH="$(LINUX_KARCH)" \
+	CROSS_COMPILE="$(TARGET_CROSS)" \
+	SUBDIRS="$(PKG_BUILD_DIR)"
+
 define Build/Compile
 	@echo ...
 	@echo '... Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	@echo 'LINUX_DIR = $(LINUX_DIR)'
-	@echo 'KERNEL_MAKEOPTS = $(KERNEL_MAKEOPTS)'
-	@$(MAKE) $(KERNEL_MAKEOPTS) \
-		SUBDIRS="$(PKG_BUILD_DIR)" \
+	$(MAKE) -C "$(LINUX_DIR)" \
+		$(MAKE_OPTS) \
 		modules
 endef
 
 $(eval $(call KernelPackage,abba-driver-test-1))
+
