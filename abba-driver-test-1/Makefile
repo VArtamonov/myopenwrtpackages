@@ -30,9 +30,9 @@ define KernelPackage/abba-driver-test-1/description
  This package contains the proprietary wireless driver for the ABBA.
 endef
 
-#define Build/Configure
+define Build/Configure
 	echo 'Configure $(PKG_NAME) ...'
-#endef
+endef
 
 define Build/Compile
 	@echo ...
