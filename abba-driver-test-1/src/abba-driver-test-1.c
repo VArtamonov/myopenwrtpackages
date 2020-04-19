@@ -1,6 +1,9 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 
+#define DRV_NAME	"abba-driver-test-1"
+#define DRV_DESC	"ABBA - test driver"
+#define DRV_VERSION	"0.1"
 
 static int __init abba_example_init(void)
 {
@@ -22,5 +25,5 @@ module_exit(abba_example_exit);
 
 MODULE_LICENSE(“GPL”);
 MODULE_AUTHOR(“VArtamonov”);
-MODULE_DESCRIPTION(“ABBA - simple example Linux module.”);
-MODULE_VERSION(“0.01”);
+MODULE_DESCRIPTION(DRV_DESC);
+MODULE_VERSION(DRV_VERSION);
