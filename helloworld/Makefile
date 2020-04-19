@@ -40,7 +40,7 @@ endef
 
 # Package preparation instructions; create the build directory and copy the source code. 
 # The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
-define Build/Prepare
+define Build/helloworld/Prepare
 	@echo '...'
 	@echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	$(Build/Prepare/Default)
@@ -48,13 +48,13 @@ define Build/Prepare
 #	$(CP) ./src/* $(PKG_BUILD_DIR)
 endef
 
-define Build/Configure
+define Build/helloworld/Configure
 	@echo '...'
 	@echo 'Configure $(PKG_NAME) ...'
 endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
-define Build/Compile
+define Build/helloworld/Compile
 	echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		CC="$(TARGET_CC)" \
@@ -64,7 +64,7 @@ define Build/Compile
 endef
 
 # Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
-define Package/Install
+define Package/helloworld/Install
 	echo 'Install $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 #	$(INSTALL_DIR) $(1)/usr/bin
 #	$(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/usr/bin
