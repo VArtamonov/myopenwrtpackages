@@ -30,9 +30,9 @@ define Package/helloworld
 endef
 
 # Package description; a more verbose description on what our package does
-define Package/helloworld/description
-  A simple "Hello, world!" -application.
-endef
+#define Package/helloworld/description
+#  A simple "Hello, world!" -application.
+#endef
 
 # Source settings (i.e. where to find the source codes)
 # This is a custom variable, used below
@@ -40,7 +40,7 @@ endef
 
 # Package preparation instructions; create the build directory and copy the source code. 
 # The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
-define Build/helloworld/Prepare
+define Build/Prepare
 	@echo '...'
 	@echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	$(Build/Prepare/Default)
@@ -48,13 +48,13 @@ define Build/helloworld/Prepare
 #	$(CP) ./src/* $(PKG_BUILD_DIR)
 endef
 
-define Build/helloworld/Configure
+define Build/Configure
 	@echo '...'
 	@echo 'Configure $(PKG_NAME) ...'
 endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
-define Build/helloworld/Compile
+define Build/Compile
 	echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		CC="$(TARGET_CC)" \
