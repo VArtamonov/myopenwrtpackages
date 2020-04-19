@@ -43,8 +43,9 @@ endef
 define Build/Prepare
 	echo '...'
 	echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-	mkdir -p $(PKG_BUILD_DIR)
-	$(CP) ./files/* $(PKG_BUILD_DIR)
+	$(Build/Prepare/Default)
+#	mkdir -p $(PKG_BUILD_DIR)
+#	$(CP) ./src/* $(PKG_BUILD_DIR)
 endef
 
 define Build/Configure
