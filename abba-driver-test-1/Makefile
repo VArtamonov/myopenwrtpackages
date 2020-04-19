@@ -40,12 +40,14 @@ endef
 
 MAKE_OPTS:= \
 	ARCH="$(LINUX_KARCH)" \
+	CROSS_COMPILER="$(KERNEL_CROSS)"
 	SUBDIRS="$(PKG_BUILD_DIR)"
 
 define Build/Compile
 	@echo ...
 	@echo '... Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	@echo 'LINUX_DIR = $(LINUX_DIR)'
+	@echo 'MAKE_OPTS = $(MAKE_OPTS)'
 	$(MAKE) V=1 -C "$(LINUX_DIR)" \
 		$(MAKE_OPTS) \
 		modules
