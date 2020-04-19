@@ -13,7 +13,7 @@ PKG_VERSION:=1.0
 PKG_RELEASE:=1
 
 # PKG_LICENSE:=MIT
-PKG_LICENSE:=GPL-2.0
+PKG_LICENSE:=GPL
 
 #
 # PKG_BUILD_DIR=$(BUILD_DIR)/$(PKG_NAME)-$(BUILD_VARIANT)
@@ -52,55 +52,26 @@ define KernelPackage/abba-dir320-detect/description
  This package contains the proprietary wireless driver for the D-LINK DIR-320A.
 endef
 
-# MAKE_PATH := setup;driver
+EXTRA_KCONFIG:= \
+	CONFIG_ABBA_DIR320_DETECT=m
 
-# Source settings (i.e. where to find the source codes)
-# This is a custom variable, used below
-#USE_SOURCE_DIR:=files
+EXTRA_CFLAGS:= \
+	$(patsubst CONFIG_%, -DCONFIG_%=1, $(patsubst %=m,%,$(filter %=m,$(EXTRA_KCONFIG)))) \
+	$(patsubst CONFIG_%, -DCONFIG_%=1, $(patsubst %=y,%,$(filter %=y,$(EXTRA_KCONFIG)))) \
 
-MAKE_KMOD := $(MAKE) -C "$(LINUX_DIR)" \
-		$(KERNEL_MAKE_FLAGS) \
-		PATH="$(TARGET_PATH)" \
-		SUBDIRS="$(PKG_BUILD_DIR)/kmod" \
+MAKE_OPTS:= \
+	ARCH="$(LINUX_KARCH)" \
+	CROSS_COMPILE="$(TARGET_CROSS)" \
+	SUBDIRS="$(PKG_BUILD_DIR)" \
+	EXTRA_CFLAGS="$(EXTRA_CFLAGS)" \
+	$(EXTRA_KCONFIG)
 
-# Package preparation instructions; create the build directory and copy the source code. 
-# The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
-#define Build/Prepare
-#	@echo '...'
-#	@echo 'MAKE_PATH = $(MAKE_PATH)'
-#	@echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-#	$(Build/Prepare/Default)
-#	@mkdir -p $(PKG_BUILD_DIR)
-#	$(CP) ./* $(PKG_BUILD_DIR)
-#endef
-
-# Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
 define Build/Compile
-#	$(Build/Compile/Default)
-	@echo '... Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-#	@echo 'Compilier abba-dir320 ...'
-#	$(TARGET_CC) $(TARGET_CFLAGS) -Wall \
-#		-o $(PKG_BUILD_DIR)/setup/abba-dir320 $(PKG_BUILD_DIR)/setup/abba-dir320.c
-	@echo 'Compile driver ...'
-	@echo 'KERNEL_MAKEOPTS= $(KERNEL_MAKEOPTS)'
-	$(MAKE) $(KERNEL_MAKEOPTS) \
-		SUBDIRS="$(PKG_BUILD_DIR)" modules
+	$(MAKE) -C "$(LINUX_DIR)" \
+		$(MAKE_OPTS) \
+		modules
 endef
 
-#define Build/InstallDev
-#	@echo '... Install ...'
-#	$(INSTALL_DIR) $(1)/usr/lib
-#	$(CP) $(PKG_BUILD_DIR)/shared/libshared.a $(1)/usr/lib/
-#endef
-
-
-# Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
-#define Package/Install
-#	@echo 'Install $(1) ...'
-#	$(Build/Install/Default)
-#	$(INSTALL_DIR) $(1)/usr/bin
-#	$(INSTALL_BIN) $(PKG_BUILD_DIR)/setup/abba-dir320 $(1)/usr/bin
-#endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
 $(eval $(call KernelPackage,abba-dir320-detect))
