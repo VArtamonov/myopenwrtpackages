@@ -7,7 +7,7 @@ include $(TOPDIR)/rules.mk
 # Name, version and release number
 # The name and version of your package are used to define the variable to point to the build directory of your package: $(PKG_BUILD_DIR)
 PKG_NAME:=helloworld
-PKG_VERSION:=1.0
+#PKG_VERSION:=1.0
 PKG_RELEASE:=1
 PKG_LICENSE:=MIT
 
@@ -30,9 +30,9 @@ define Package/helloworld
 endef
 
 # Package description; a more verbose description on what our package does
-#define Package/helloworld/description
-#  A simple "Hello, world!" -application.
-#endef
+define Package/helloworld/description
+A simple "Hello, world!" -application.
+endef
 
 # Source settings (i.e. where to find the source codes)
 # This is a custom variable, used below
@@ -64,7 +64,7 @@ define Build/Compile
 endef
 
 # Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
-define Package/helloworld/Install
+define Package/helloworld/install
 	echo 'Install $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 #	$(INSTALL_DIR) $(1)/usr/bin
 #	$(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/usr/bin
