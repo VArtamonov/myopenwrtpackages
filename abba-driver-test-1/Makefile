@@ -8,6 +8,7 @@
 
 include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
+include $(INCLUDE_DIR)/kernel-defaults.mk
 
 PKG_NAME:=abba-driver-test-1
 PKG_VERSION:=0
