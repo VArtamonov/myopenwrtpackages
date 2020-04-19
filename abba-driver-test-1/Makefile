@@ -38,20 +38,24 @@ define Build/Configure
 	@echo ...
 endef
 
+EXTRA_KCONFIG:= \
+	CONFIG_ABBA_DRIVER_TEST_1=m
+
+EXTRA_CFLAGS:= \
+	$(patsubst CONFIG_%, -DCONFIG_%=1, $(patsubst %=m,%,$(filter %=m,$(EXTRA_KCONFIG)))) \
+	$(patsubst CONFIG_%, -DCONFIG_%=1, $(patsubst %=y,%,$(filter %=y,$(EXTRA_KCONFIG)))) \
+
 MAKE_OPTS:= \
 	ARCH="$(LINUX_KARCH)" \
-	CROSS_COMPILER="$(KERNEL_CROSS)"
-	SUBDIRS="$(PKG_BUILD_DIR)"
+	CROSS_COMPILE="$(TARGET_CROSS)" \
+	SUBDIRS="$(PKG_BUILD_DIR)" \
+	EXTRA_CFLAGS="$(EXTRA_CFLAGS)" \
+	$(EXTRA_KCONFIG)
 
 define Build/Compile
-	@echo ...
-	@echo '... Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-	@echo 'LINUX_DIR = $(LINUX_DIR)'
-	@echo 'MAKE_OPTS = $(MAKE_OPTS)'
-	$(MAKE) V=1 -C "$(LINUX_DIR)" \
+	$(MAKE) -C "$(LINUX_DIR)" \
 		$(MAKE_OPTS) \
 		modules
 endef
 
 $(eval $(call KernelPackage,abba-driver-test-1))
-
