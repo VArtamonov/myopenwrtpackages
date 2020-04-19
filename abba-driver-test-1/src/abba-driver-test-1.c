@@ -1,5 +1,6 @@
-#include <linux/module.h>
 #include <linux/kernel.h>
+#include <linux/module.h>
+#include <linux/platform_device.h>
 
 #define DRV_NAME	"abba-driver-test-1"
 #define DRV_DESC	"ABBA - test driver"

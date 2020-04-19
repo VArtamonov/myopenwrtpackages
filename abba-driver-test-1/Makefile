@@ -14,7 +14,7 @@ PKG_NAME:=abba-driver-test-1
 PKG_VERSION:=0
 PKG_RELEASE:=1
 
-PKG_BUILD_DIR:=$(KERNEL_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
+#PKG_BUILD_DIR:=$(KERNEL_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -32,14 +32,18 @@ define KernelPackage/abba-driver-test-1/description
 endef
 
 define Build/Configure
+	@echo ...
 	echo 'Configure $(PKG_NAME) ...'
+	@echo 'LINUX_DIR = $(LINUX_DIR)'
+	@echo 'KERNEL_MAKEOPTS = $(KERNEL_MAKEOPTS)'
+	@echo ...
 endef
 
 define Build/Compile
 	@echo ...
 	@echo '... Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-	@echo 'LINUX_DIR = $(LINUX_DIR)'
-	$(MAKE) $(KERNEL_MAKEOPTS) \
+#	@echo 'LINUX_DIR = $(LINUX_DIR)'
+	@$(MAKE) $(KERNEL_MAKEOPTS) \
 		SUBDIRS="$(PKG_BUILD_DIR)" \
 		modules
 endef
