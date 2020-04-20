@@ -27,27 +27,14 @@ PKG_LICENSE:=GPL
 include $(INCLUDE_DIR)/package.mk
 
 # Package definition; instructs on how and where our package will appear in the overall configuration menu ('make menuconfig')
-define Package/abba-dir320
-  SUBMENU:=ABBA
-#  SECTION:=kernel
-#  CATEGORY:=Kernel modules
-  TITLE:=Proprietary D-DLINK DIR-320 driver test
-  DEPENDS:=PACKAGE_kmod-abba-dir320-detect
-endef
-
 define KernelPackage/abba-dir320-detect
   SUBMENU:=ABBA
   SECTION:=kernel
-  TITLE:=Kernel driver for D-LINK DIR-320A
+  TITLE:=Kernel driver for D-LINK DIR-320A of ABBA
   DEPENDS:= @GPIO_SUPPORT @TARGET_brcm47xx
   FILES:=$(PKG_BUILD_DIR)/abba-dir320-detect.ko
   AUTOLOAD:=$(call AutoLoad,30,abba-dir320-detect,1)
 endef
-
-## Package description; a more verbose description on what our package does
-#define Package/abba-dir320/description
-# This package contains the proprietary wireless driver for the D-LINK DIR-320A.
-#endef
 
 define KernelPackage/abba-dir320-detect/description
  This package contains the proprietary wireless driver for the D-LINK DIR-320A.

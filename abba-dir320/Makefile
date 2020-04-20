@@ -30,7 +30,7 @@ define Package/abba-dir320
   SUBMENU:=ABBA
   SECTION:=kernel
 #  CATEGORY:=Kernel modules
-#  TITLE:=Proprietary D-DLINK DIR-320 driver test
+  TITLE:=Proprietary ABBA D-DLINK DIR-320 driver
   DEPENDS:=PACKAGE_kmod-abba-dir320-detect
 endef
 
