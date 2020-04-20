@@ -60,16 +60,18 @@ endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
 define Build/Compile
+	@echo '...'
 	echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		CC="$(TARGET_CC)" \
-		CFLAGS="$(TARGET_CFLAGS)" \
-		LDFLAGS="$(TARGET_LDFLAGS)"
-#	$(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
+#	$(MAKE) -C $(PKG_BUILD_DIR) \
+#		CC="$(TARGET_CC)" \
+#		CFLAGS="$(TARGET_CFLAGS)" \
+#		LDFLAGS="$(TARGET_LDFLAGS)"
+##	$(MAKE) $(KERNEL_MAKEOPTS) SUBDIRS="$(PKG_BUILD_DIR)" modules
 endef
 
 # Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
 define Package/abba-dir320/install
+	@echo '...'
 	echo 'Install $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	$(Build/Install/Default)
 #	$(INSTALL_DIR) $(1)/usr/bin
