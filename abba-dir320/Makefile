@@ -31,7 +31,7 @@ define Package/abba-dir320
   SECTION:=kernel
 #  CATEGORY:=Kernel modules
   TITLE:=Proprietary ABBA D-DLINK DIR-320 driver
-  DEPENDS:=PACKAGE_kmod-abba-dir320-detect
+  DEPENDS:=+abba-dir320-detect
 endef
 
 ## Package description; a more verbose description on what our package does
