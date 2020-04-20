@@ -29,7 +29,8 @@ include $(INCLUDE_DIR)/package.mk
 # Package definition; instructs on how and where our package will appear in the overall configuration menu ('make menuconfig')
 define KernelPackage/abba-dir320-detect
   SUBMENU:=ABBA
-  SECTION:=kernel
+  SECTION:=myopenwrtpackages
+  CATEGORY:=Extra packages
   TITLE:=Kernel driver for D-LINK DIR-320A of ABBA
   DEPENDS:= @GPIO_SUPPORT @TARGET_brcm47xx
   FILES:=$(PKG_BUILD_DIR)/abba-dir320-detect.ko

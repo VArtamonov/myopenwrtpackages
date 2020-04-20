@@ -28,8 +28,8 @@ include $(INCLUDE_DIR)/package.mk
 # Package definition; instructs on how and where our package will appear in the overall configuration menu ('make menuconfig')
 define Package/abba-dir320
   SUBMENU:=ABBA
-  SECTION:=kernel
-#  CATEGORY:=Kernel modules
+  SECTION:=myopenwrtpackages
+  CATEGORY:=Extra packages
   TITLE:=Proprietary ABBA D-DLINK DIR-320 driver
   DEPENDS:=+kmod-abba-dir320-detect
 endef
