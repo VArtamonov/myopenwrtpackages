@@ -48,8 +48,8 @@ endef
 define Build/Prepare
 	@echo '...'
 	@echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-	$(Build/Prepare/Default)
-#	mkdir -p $(PKG_BUILD_DIR)
+#	$(Build/Prepare/Default)
+	mkdir -p $(PKG_BUILD_DIR)
 #	$(CP) ./src/* $(PKG_BUILD_DIR)
 endef
 
@@ -73,7 +73,8 @@ endef
 define Package/abba-dir320/install
 	@echo '...'
 	echo 'Install $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-	$(Build/Install/Default)
+	$(CP) ./files/* $(1)/
+#	$(Build/Install/Default)
 #	$(INSTALL_DIR) $(1)/usr/bin
 #	$(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/usr/bin
 endef
