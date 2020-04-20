@@ -40,7 +40,7 @@ struct platform_device *my_gpio_led_register_device(int id, const struct gpio_le
 		.gpio		= _gpio,				\
 		.active_low	= _active_low,				\
 		.default_state	= LEDS_GPIO_DEFSTATE_OFF,		\
-		.default_trigger	= _default_trigger,		\
+		.default_trigger= _default_trigger,			\
 	}
 
 #define BCM47XX_GPIO_KEY(_gpio, _code)					\
@@ -102,18 +102,17 @@ static int bcm47xx_buttons_copy(const struct gpio_keys_button *buttons,
 
 static const struct gpio_keys_button
 bcm47xx_buttons_di320_a2[] __initconst = {
-	BCM47XX_GPIO_KEY(2, KEY_WPS_BUTTON),
-	BCM47XX_GPIO_KEY(3, KEY_RESTART),
+	BCM47XX_GPIO_KEY(6, KEY_WPS_BUTTON),
+	BCM47XX_GPIO_KEY(7, KEY_RESTART),
 };
-
 
 static const struct gpio_led
 bcm47xx_leds_asus_di320_a2[] __initconst = {
-	BCM47XX_GPIO_LED(0, "green", "wlan", 0, LEDS_GPIO_DEFSTATE_OFF),
-	BCM47XX_GPIO_LED(1, "green", "power", 1, LEDS_GPIO_DEFSTATE_ON),
-	BCM47XX_GPIO_LED(3, "red", "wps", 0, LEDS_GPIO_DEFSTATE_OFF),
-	BCM47XX_GPIO_LED(4, "blue", "wps", 0, LEDS_GPIO_DEFSTATE_OFF),
-	BCM47XX_GPIO_LED(5, "green", "usb", 0, LEDS_GPIO_DEFSTATE_OFF),
+	BCM47XX_GPIO_LED(0, "green",	"wlan",		0, LEDS_GPIO_DEFSTATE_OFF),
+	BCM47XX_GPIO_LED(1, "green",	"power",	1, LEDS_GPIO_DEFSTATE_ON),
+	BCM47XX_GPIO_LED(3, "red", 	"wps",		0, LEDS_GPIO_DEFSTATE_OFF),
+	BCM47XX_GPIO_LED(4, "blue",	"wps",		0, LEDS_GPIO_DEFSTATE_OFF),
+	BCM47XX_GPIO_LED(5, "green",	"usb",		0, LEDS_GPIO_DEFSTATE_OFF),
 //	BCM47XX_GPIO_LED(5, "green", "usb", 0, LEDS_GPIO_DEFSTATE_OFF),
 };
 
