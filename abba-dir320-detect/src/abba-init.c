@@ -38,7 +38,7 @@ static void __exit abba_dir320_custom_exit(void)
 module_init(abba_dir320_custom_init);
 module_exit(abba_dir320_custom_exit);
 
-MODULE_LICENSE("MIT");
+MODULE_LICENSE("GPL");
 MODULE_AUTHOR("ABBA 2020");
 MODULE_DESCRIPTION(DRV_DESC);
 MODULE_VERSION(DRV_VERSION);
