@@ -10,10 +10,12 @@ echo "FEED update mypackages ..."
 
 # вывод времени
 time_now=$(date  "+%Y.%m.%d %H:%M:%S")
-echo $time_now
-my_commit="Commit "
+my_commit="Commit at "
+commit1=$my_commit$time_now
+echo $commit1
+
 git add .
-git commit -a -S -m 'Commit '
+git commit -a -S -m "$commit1"
 git push localserver
 
 echo "End ..."
