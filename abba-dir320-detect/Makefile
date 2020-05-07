@@ -59,6 +59,16 @@ define Build/Compile
 		modules
 endef
 
+# Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
+define Package/abba-dir320-detect/install
+	@echo '...'
+	echo 'Install $(PKG_NAME) ...'
+#	$(CP) ./files/* $(1)/
+#	$(Build/Install/Default)
+#	$(INSTALL_DIR) $(1)/usr/bin
+#	$(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/usr/bin
+endef
+
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
 $(eval $(call KernelPackage,abba-dir320-detect))
 
