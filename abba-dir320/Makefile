@@ -75,7 +75,7 @@ define Package/abba-dir320/install
 	@echo '...'
 	echo 'Install $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 #	$(CP) ./files/* $(1)/
-#	$(Build/Install/Default)
+	$(Build/Install/Default)
 #	$(INSTALL_DIR) $(1)/usr/bin
 #	$(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/usr/bin
 endef
