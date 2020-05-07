@@ -49,7 +49,7 @@ define Build/Prepare
 	@echo '...'
 	@echo 'Prepare $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 #	$(Build/Prepare/Default)
-	mkdir -p $(PKG_BUILD_DIR)
+	@mkdir -p $(PKG_BUILD_DIR)
 #	$(CP) ./src/* $(PKG_BUILD_DIR)
 	@echo 'BIN_DIR=$(BIN_DIR)'
 endef
@@ -62,7 +62,7 @@ endef
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
 define Build/Compile
 	@echo '...'
-	echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+	@echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 #	$(MAKE) -C $(PKG_BUILD_DIR) \
 #		CC="$(TARGET_CC)" \
 #		CFLAGS="$(TARGET_CFLAGS)" \
@@ -73,9 +73,9 @@ endef
 # Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
 define Package/abba-dir320/install
 	@echo '...'
-	echo 'Install $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-#	$(CP) ./files/* $(1)/
-	$(Build/Install/Default)
+	@echo 'Install $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+#	$(Build/Install/Default)
+	$(CP) ./files/* $(1)/
 #	$(INSTALL_DIR) $(1)/usr/bin
 #	$(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/usr/bin
 endef

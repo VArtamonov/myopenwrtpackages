@@ -62,7 +62,8 @@ endef
 # Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
 define Package/abba-dir320-detect/install
 	@echo '...'
-	echo 'Install $(PKG_NAME) ...'
+	@echo 'Install $(PKG_NAME) ...'
+	@echo 'BIN_DIR = $(BIN_DIR)'
 #	$(CP) ./files/* $(1)/
 #	$(Build/Install/Default)
 #	$(INSTALL_DIR) $(1)/usr/bin
