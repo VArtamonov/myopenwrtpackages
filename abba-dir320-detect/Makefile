@@ -52,6 +52,7 @@ MAKE_OPTS:= \
 	SUBDIRS="$(PKG_BUILD_DIR)"
 
 define Build/Compile
+	$(call MESSAGE, Compile $(PKG_NAME)... );
 	$(MAKE) \
 		$(if $(findstring c,$(OPENWRT_VERBOSE)),V=1,V='') \
 		-C "$(LINUX_DIR)" \
