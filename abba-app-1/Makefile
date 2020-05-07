@@ -69,8 +69,8 @@ endef
 define Package/abba-app-1/install
 	@echo 'Install $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 #	$(Build/Install/Default)
-#	$(INSTALL_DIR) $(1)/usr/bin
-#	$(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/usr/bin
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/$(PKG_NAME) $(1)/usr/bin
 endef
 
 #define Build/Install
