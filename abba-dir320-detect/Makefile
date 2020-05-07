@@ -61,5 +61,5 @@ endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
 $(eval $(call KernelPackage,abba-dir320-detect))
-#$(eval $(call BuildPackage,abba-dir320))
+
 
