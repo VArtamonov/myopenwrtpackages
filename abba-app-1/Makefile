@@ -57,7 +57,7 @@ endef
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
 define Build/Compile
-	echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+	@echo 'Compile $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		CC="$(TARGET_CC)" \
 		CFLAGS="$(TARGET_CFLAGS)" \
@@ -67,16 +67,16 @@ endef
 
 # Package install instructions; create a directory inside the package to hold our executable, and then copy the executable we built previously into the folder
 define Package/abba-app-1/install
-	echo 'Install $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-	$(Build/Install/Default)
+	@echo 'Install $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+#	$(Build/Install/Default)
 #	$(INSTALL_DIR) $(1)/usr/bin
 #	$(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/usr/bin
 endef
 
-define Build/Install
-	echo 'Install $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
-	$(Build/Install/Default)
-endef
+#define Build/Install
+#	@echo 'Install $(PKG_NAME) to $(PKG_BUILD_DIR) ...'
+#	$(Build/Install/Default)
+#endef
 
 # This command is always the last, it uses the definitions and variables we give above in order to get the job done
 $(eval $(call BuildPackage,abba-app-1))
