@@ -1,9 +1,59 @@
-#!/bin/sh /etc/rc.common
+#!/bin/sh
 # Copyright (C) 2006-2015 OpenWrt.org
 # ABBA DIR-320 2020
 
 . /lib/functions/system.sh
 . /lib/functions/uci-defaults.sh
+
+sh_dir320=$0
+
+PID=$$
+#echo "PID $PID"
+
+CFG=$1
+[ -n "$CFG" ] || CFG=/etc/board.json
+
+log_dir320() {
+		logger -t "$sh_dir320[$PID]" "DIR320-SETUP: $@"
+}
+
+detect_board_dir320() {
+#	local boardtype="$1"
+#	local boardnum="$2"
+
+	log_dir320 "Set switch ..."
+
+	local vlan0ports="$(nvram get vlan0ports)"
+	local vlan1ports="$(nvram get vlan1ports)"
+	local vlan2ports="$(nvram get vlan2ports)"
+	local cpuport="$(swconfig dev switch0 help 2>/dev/null | sed -ne "s|.*cpu @ \([0-9]*\).*|\1|p")"
+
+	log_dir320 "vlan0ports=$vlan0ports"
+	log_dir320 "vlan1ports=$vlan1ports"
+	log_dir320 "vlan2ports=$vlan2ports"
+	#echo "${vlan0ports:0:9}"
+	#echo "${vlan1ports:0:3}"
+	log_dir320 "cpuport=$cpuport"
+
+	ucidef_add_switch "switch0" \
+		"0:wan" "1:lan" "2:lan" "3:lan" "4:lan" "5@eth0"
+
+	# MAC addresses on 4704 tend to be screwed up. Add a workaround here
+	local mac="$(nvram get et0macaddr)"
+	local pat="[0-9a-fA-F][0-9a-fA-F]:[0-9a-fA-F][0-9a-fA-F]"
+	pat="$pat:[0-9a-fA-F][0-9a-fA-F]:[0-9a-fA-F][0-9a-fA-F]"
+	pat="$pat:[0-9a-fA-F][0-9a-fA-F]:[0-9a-fA-F][0-9a-fA-F]"
+	
+	case "$mac" in
+		$pat)
+			log_dir320 "Set macaddress $mac to interface LAN"
+			ucidef_set_interface_macaddr "lan" "$mac"
+			local mac2=$(macaddr_add "$mac" 1)
+			log_dir320 "Set macaddress $mac2 to interface WAN"
+			ucidef_set_interface_macaddr "wan" "$mac2"
+		;;
+	esac
+}
 
 detect_by_model() {
 	local model="$1"
@@ -12,28 +62,32 @@ detect_by_model() {
 
 	case "$model" in
 
-	"D-Link DIR-320")
-		ucidef_add_switch "switch0" \
-			"0:wan" "1:lan" "2:lan" "3:lan" "4:lan" "5@eth0"
-		;;
-	*)
-		detect_by_boardtype "$boardtype" "$boardnum"
+		"D-Link DIR-320")
+			detect_board_dir320
+			;;
+		*)
+			log_dir320 "Unable to determine network configuration"
+			ucidef_set_interface_lan "eth0"
 		;;
 	esac
 }
 
 
 ## model="$(sed -ne 's/^machine[ \t]*: //p' /proc/cpuinfo)"
+log_dir320 "START ..."
 model="D-Link DIR-320"
 
 boardtype="$(nvram get boardtype)"
 boardnum="$(nvram get boardnum)"
 
 board_config_update
-
 ucidef_set_board_id "$boardtype${boardnum:+:$boardnum}"
 ucidef_set_model_name "$model"
 
+log_dir320 "model=$model"
+log_dir320 "boardtype=$boardtype"
+log_dir320 "boardnum=$boardnum"
 detect_by_model "$model" "$boardtype" "$boardnum"
 
 board_config_flush
+log_dir320 "END ..."
